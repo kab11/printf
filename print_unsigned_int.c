@@ -51,13 +51,19 @@ void pf_hex_oct(va_list ap, type_token type)
 	int_str[i] = '\0';
 	while (--i > 0) /* will take 15 characters 16th is '\0' */
 	{
-		if (type.x)
-			int_str[i] = HEX_LOWER[num & 0xF];
-		else if (type.X)
-			int_str[i] = HEX_UPPER[num & 0xF];
-		else if (type.o)
-			int_str[i] = OCTAL[num & 7777];
-		num >>= 4;
+		if (type.x || type.X)
+		{
+			if (type.x)
+				int_str[i] = HEX_LOWER[num & 0xF];
+			else
+				int_str[i] = HEX_UPPER[num & 0xF];
+			num >>= 4;
+		}
+		if (type.o)
+		{
+			int_str[i] = OCTAL[num & 1111];
+			num >>= 3;
+		}
 	}
 	while (int_str[++i] == '0')
 		;

@@ -82,10 +82,10 @@ int main(void)
 
 	// ft_printf("Unsigned Integer (ft_printf): %u\n", 123);
 	// ft_printf("Unsigned Integer (ft_printf): %u\n", -123);
-	// ft_printf("Unsigned hexadecimal integer, lowercase (ft_printf): %x\n", -2545);
-	// ft_printf("Unsigned hexadecimal integer, LOWERCASE (ft_printf): %x\n", 2545);
-	// ft_printf("Unsigned hexadecimal integer, UPPERCASE (ft_printf): %X\n", -2545);
-	// ft_printf("Unsigned hexadecimal integer, UPPERCASE (ft_printf): %X\n", 2545);
+	ft_printf("Unsigned hexadecimal integer, lowercase (ft_printf): %x\n", -2545);
+	ft_printf("Unsigned hexadecimal integer, LOWERCASE (ft_printf): %x\n", 2);
+	ft_printf("Unsigned hexadecimal integer, UPPERCASE (ft_printf): %X\n", -2545);
+	ft_printf("Unsigned hexadecimal integer, UPPERCASE (ft_printf): %X\n", 100);
 	ft_printf("Unsigned octal (ft_printf): %o\n", 012);
 	ft_printf("Unsigned octal (ft_printf): %o\n", 33);
 	
