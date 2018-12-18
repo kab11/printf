@@ -72,7 +72,22 @@ int main(void)
 {
 	
 	/* Characters */
-	//printf("Characters (printf): %%\n");
-	ft_printf("Characters (ft_printf): %u\n", 123);
+	// ft_printf("Characters (ft_printf): %c\n", 't');
+	// ft_printf("String (ft_printf): %s\n", "there you go smarty pants");
+
+	// ft_printf("Signed Decimal (ft_printf): %d\n", 123);
+	// ft_printf("Signed Decimal (ft_printf): %d\n", -123);
+	// ft_printf("Signed Integer (ft_printf): %i\n", 123);
+	// ft_printf("Signed Integer (ft_printf): %i\n", -123);
+
+	// ft_printf("Unsigned Integer (ft_printf): %u\n", 123);
+	// ft_printf("Unsigned Integer (ft_printf): %u\n", -123);
+	// ft_printf("Unsigned hexadecimal integer, lowercase (ft_printf): %x\n", -2545);
+	// ft_printf("Unsigned hexadecimal integer, LOWERCASE (ft_printf): %x\n", 2545);
+	// ft_printf("Unsigned hexadecimal integer, UPPERCASE (ft_printf): %X\n", -2545);
+	// ft_printf("Unsigned hexadecimal integer, UPPERCASE (ft_printf): %X\n", 2545);
+	ft_printf("Unsigned octal (ft_printf): %o\n", 012);
+	ft_printf("Unsigned octal (ft_printf): %o\n", 33);
+	
 	return 0;
 }

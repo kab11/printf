@@ -21,6 +21,10 @@
 # include "libft.h"
 # include "get_next_line/get_next_line.h"
 
+# define HEX_LOWER "0123456789abcdef"
+# define HEX_UPPER "0123456789ABCDEF" 
+# define OCTAL "01234567" 
+
 /*  
  *  The colon signifies that they are bit-field; tells how many bits each variable
  *  takes up ; and use it to load in a single 32-bit value  
@@ -46,6 +50,14 @@ typedef struct pf_parse
     unsigned int t: 1;
     char ctype;
 } pf_token; //flag token
+
+typedef struct pf_checks
+{
+    unsigned int x: 1;
+    unsigned int X: 1;
+    unsigned int o: 1;
+} type_token; //type token
+
 
 typedef struct pf_store
 {

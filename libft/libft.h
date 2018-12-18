@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <unistd.h>
 
+int 				ft_abs(int i);
 int					ft_atoi(const char *str);
 void				ft_bzero(void *str, size_t n);
 int					ft_isalnum(int c);
