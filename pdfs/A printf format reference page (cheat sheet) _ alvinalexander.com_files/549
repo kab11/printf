@@ -1,0 +1,13 @@
+Chrysler_feeds.callOfferData({
+  "data": [
+    {
+      "dma": "807",
+      "BCInfo": {
+        "name": "honolulu",
+        "BusinessCenter": "CBC",
+        "BCCode": "E",
+        "BCServiceCode": "760"
+      }
+    }
+  ]
+});

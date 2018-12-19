@@ -19,9 +19,10 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include "libft.h"
+# include <stdint.h>
 # include "get_next_line/get_next_line.h"
 
-# define HEX_LOWER "0123456789abcdef"
+# define HEX "0123456789abcdef"
 # define HEX_UPPER "0123456789ABCDEF" 
 # define OCTAL "01234567" 
 
@@ -53,9 +54,11 @@ typedef struct pf_parse
 
 typedef struct pf_checks
 {
+    unsigned int u: 1;
     unsigned int x: 1;
     unsigned int X: 1;
     unsigned int o: 1;
+    unsigned int p: 1;
 } type_token; //type token
 
 
@@ -77,7 +80,7 @@ void get_type(const char **pf, va_list ap, pf_token *ftoken);
 void pf_signed(const char **pf, va_list ap);
 
 /*  ------------------------ PRINT_UNSIGNED INT ------------------------ */
-void pf_unsigned(const char **pf, va_list ap);
+void pf_unsigned(const char **pf, va_list ap, pf_token *ftoken);
 
 /*  ------------------------ PRINT_CHARS ------------------------ */
 void print_chars(const char **pf, va_list ap);

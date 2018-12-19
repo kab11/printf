@@ -114,13 +114,11 @@ void get_length(const char **pf, pf_token *ftoken)
 
 void get_type(const char **pf, va_list ap, pf_token *ftoken)
 {
-	//printf("*pf = %c\n", *(*pf));
 	const char *pf_copy; // if lines are to long can use *(*pf) to save lines 
 	int i;
 
 	pf_copy = *pf;
 	i = 0;
-	//printf("find type: %c\n", pf_copy[i]);
 	if (pf_copy[i] == 'd' || pf_copy[i] == 'i' || pf_copy[i] == 'f' || pf_copy[i] == 'e' || pf_copy[i] == 'g')
 	{
 		ftoken->ctype = pf_copy[i];
@@ -129,7 +127,7 @@ void get_type(const char **pf, va_list ap, pf_token *ftoken)
 	else if (pf_copy[i] == 'u' || pf_copy[i] == 'x' || pf_copy[i] == 'X' || pf_copy[i] == 'o' || pf_copy[i] == 'p' || pf_copy[i] == 'a')
 	{
 		ftoken->ctype = pf_copy[i];
-		pf_unsigned(pf, ap);
+		pf_unsigned(pf, ap, ftoken);
 	}
 	else if (pf_copy[i] == 'c' || pf_copy[i] == 's')
 	{
@@ -141,6 +139,7 @@ void get_type(const char **pf, va_list ap, pf_token *ftoken)
 		ftoken->ctype = pf_copy[i];
 		//pf_other(const char **pf, va_list ap, pf_token *ftoken);
 	}
+	//printf("ctype: %c\n", ftoken->ctype);
 }
 
 int parse_params(const char *pf, va_list ap, pf_token *ftoken)

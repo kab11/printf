@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://alvinalexander.com/programming/printf-format-cheat-sheet -->
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# " class=" js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta name="title" content="A printf format reference page (cheat sheet) | alvinalexander.com">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://alvinalexander.com/programming/printf-format-cheat-sheet">
+<meta name="description" content="A printf reference page -- many printf examples in a concise summary, for Java, Perl, Ruby, and other languages.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="https://alvinalexander.com/themes/aadotcom/images/aa_favicon.ico" type="image/vnd.microsoft.icon">
+
+    <title>A printf format reference page (cheat sheet) | alvinalexander.com</title>
+    <link rel="stylesheet" href="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/css_ZW5YKQyAvGi_RGoUEY-9lsKEPgvXOo-Heg-8UHHNfWE.css" media="all">
+<link rel="stylesheet" href="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/css_H97HPNYOm5RLMytrd5xY2Lqqw-CTZJ9OxRHILaKB0Ow.css" media="all">
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+
+    <link rel="shortcut icon" href="https://alvinalexander.com/themes/aadotcom/images/aa_favicon.ico" type="image/x-icon">
+
+        <link rel="stylesheet" media="only screen and (min-width:769px)" href="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/desktop.css">
+
+        <link rel="stylesheet" media="only screen and (max-width:320px)" href="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/mobile.css">
+
+        <link rel="stylesheet" media="only screen and (min-width:321px) and (max-width:768px)" href="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/mobile.css">
+
+<script src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/f.txt"></script><script src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/ca-pub-5530641073697401.js"></script><script type="text/javascript" async="" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/ga.js"></script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35326316-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+</script>
+
+<script type="text/javascript">
+    var adblock = true;
+</script>
+<script type="text/javascript" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/adframe.js"></script>
+
+<script src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/jquery-3.3.1.min.js"></script>
+<script src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/books.js"></script>
+<script src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/booksStructs.js"></script>
+
+<!-- formatting PRE sections -->
+<link href="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/prism.css" rel="stylesheet">
+<style>
+pre[class*="language-"] {
+    background-color: #fdfaf6;
+    background-color: #fdfaf9;
+}
+pre[class*="language-"] code {
+    font-size: 13px;
+}
+pre[class*="language-"] span.token.number {
+    color: #3333cc;
+}
+</style>
+
+  <link rel="preload" href="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/f(1).txt" as="script"><script type="text/javascript" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/f(1).txt"></script><link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/r20181205/r20180604/show_ads_impl.js" as="script"></head>
+
+
+  <body class="path-node page-node-type-blog">
+
+    
+
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+    <div class="layout-container">
+
+      
+        <div class="header">
+        <div class="header-inner">
+            <div class="header-inner-left">
+                            </div>
+            <div class="header-inner-right">
+                <div id="header-mobile-link"><a href="https://alvinalexander.com/">alvin alexander</a></div>
+                <div id="header-image">
+                    <a href="https://alvinalexander.com/"><img src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/alvin-alexander-sig.png" alt="alvin alexander" width="227" height="23"></a>
+                </div>
+
+                <span id="nav">
+                    <a id="home_icon" href="https://alvinalexander.com/" alt="Home" title="Home"><img src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/home.png" height="16"></a>
+                    <a id="search_icon" href="https://alvinalexander.com/search" alt="search" title="search"><img src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/search.png" height="16"></a>
+                    <a id="about_icon" href="https://alvinalexander.com/about-al-alexander" alt="About Alvin Alexander" title="About Alvin Alexander"><img src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/person.png" height="16"></a>
+                    <a id="rss_icon" href="https://alvinalexander.com/rss.xml" alt="rss feed" title="rss feed"><img src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/rss.png" height="16"></a>
+                    <a id="twitter_icon" href="http://twitter.com/alvinalexander" alt="Alvin Alexander on Twitter" title="Alvin Alexander on Twitter"><img src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/twitter2.png" height="16"></a>
+                </span>
+                    
+            </div>         </div>     </div> 
+    <div class="content">
+        <div class="content-inner">
+
+            <div class="content-inner-left">
+                                  <aside class="layout-sidebar-first" role="complementary">
+                      <div class="region region-sidebar-first">
+    <div id="block-skyadprogramming" class="block block-block-content block-block-content9ecc6edd-65b4-4bff-8471-7d3d9400464e">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="ads sky_ad" id="sky-ad">
+<script async="" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/f(2).txt"></script>
+<!-- Responsive, ATF, Programming -->
+<ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-5530641073697401" data-ad-slot="2909971948" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:210px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:210px;background-color:transparent;"><iframe width="210" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0px;width:210px;height:600px;" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/saved_resource.html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+      
+  </div>
+<div id="block-lhsbooksblock" class="block block-block-content block-block-content5cd0aa0a-25ba-4fc8-8a6a-4b2a2a987098">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div id="lhs-books-block">
+<h2>favorite books</h2>
+<div class="lhs-book" align="center"><a href="http://kbhr.co/hismb" rel="nofollow"><img alt="How I Sold My Business, A Personal Diary" title="How I Sold My Business, A Personal Diary" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/HISMB-160pxWide.jpg" width="145"><br>my book at amazon</a></div></div>
+</div>
+      
+  </div>
+<div id="block-alscategories" class="block block-block-content block-block-content8137e809-0033-4584-9238-878acac04c15">
+  
+      <h2>categories</h2>
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><!-- NEW -->
+<ul class="menu"><li class="leaf"><a href="https://alvinalexander.com/alaska">alaska&nbsp;<span class="category-count">(25)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/android">android&nbsp;<span class="category-count">(138)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/best-practices">best practices&nbsp;<span class="category-count">(63)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/career">career&nbsp;<span class="category-count">(50)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/colorado">colorado&nbsp;<span class="category-count">(21)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/cvs">cvs&nbsp;<span class="category-count">(27)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/design">design&nbsp;<span class="category-count">(33)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/drupal">drupal&nbsp;<span class="category-count">(120)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/eclipse">eclipse&nbsp;<span class="category-count">(6)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/funny">funny&nbsp;<span class="category-count">(3)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/gadgets">gadgets&nbsp;<span class="category-count">(108)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/git">git&nbsp;<span class="category-count">(15)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/intellij">intellij&nbsp;<span class="category-count">(4)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/java">java&nbsp;<span class="category-count">(429)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/jdbc">jdbc&nbsp;<span class="category-count">(26)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/jfc-swing">swing&nbsp;<span class="category-count">(74)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/jsp">jsp&nbsp;<span class="category-count">(9)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/latex">latex&nbsp;<span class="category-count">(26)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/linux">linux/unix&nbsp;<span class="category-count">(289)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/osx">mac&nbsp;os&nbsp;x&nbsp;<span class="category-count">(315)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/mysql">mysql&nbsp;<span class="category-count">(54)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/ooa-ood">ooa/ood&nbsp;<span class="category-count">(11)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/perl">perl&nbsp;<span class="category-count">(156)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/php">php&nbsp;<span class="category-count">(97)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/postgresql">postgresql&nbsp;<span class="category-count">(17)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/programming">programming&nbsp;<span class="category-count">(43)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/ruby">ruby&nbsp;<span class="category-count">(56)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/scala">scala&nbsp;<span class="category-count">(640)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/sencha">sencha&nbsp;<span class="category-count">(23)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/servlets">servlets&nbsp;<span class="category-count">(10)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/technology">technology&nbsp;<span class="category-count">(84)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/testing">testing&nbsp;<span class="category-count">(13)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/uml">uml&nbsp;<span class="category-count">(24)</span></a></li>
+	<li class="leaf"><a href="https://alvinalexander.com/zen">zen&nbsp;<span class="category-count">(47)</span></a></li>
+</ul></div>
+      
+  </div>
+
+  </div>
+
+                  </aside>
+                
+                            </div> 
+            <div class="content-inner-right">
+                                                <div class="layout-content">
+                      <div class="region region-content">
+    <div id="block-aadotcom-page-title" class="block block-core block-page-title-block">
+  
+    
+      
+  <h1 class="page-title"><span class="field field--name-title field--type-string field--label-hidden">A printf format reference page (cheat sheet)</span>
+</h1>
+
+
+  </div>
+<div id="block-aadotcom-content" class="block block-system block-system-main-block">
+  
+    
+      
+<article data-history-node-id="997" role="article" about="/programming/printf-format-cheat-sheet" class="node node--type-blog node--promoted node--view-mode-full">
+
+    
+        
+
+            <div class="submitted_by">By Alvin Alexander. Last updated: December 18 2018</div>
+
+    <div class="node__content">
+            
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="toc-filter"><div class="toc toc-responsive">
+  
+<div class="toc-desktop toc toc-tree">
+
+      <h3>Table of Contents</h3>
+  
+    
+      <ol class="circle"><li>
+      <a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#printf-formatting-with-perl-and-java">printf formatting with Perl and Java</a>
+          </li>
+      <li>
+      <a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#a-summary-of-printf-format-specifiers">A summary of printf format specifiers</a>
+          </li>
+      <li>
+      <a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#controlling-integer-width-with-printf">Controlling integer width with printf</a>
+          </li>
+      <li>
+      <a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#left-justifying-printf-integer-output">Left-justifying printf integer output</a>
+          </li>
+      <li>
+      <a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#the-printf-integer-zero-fill-option">The printf integer zero-fill option</a>
+          </li>
+      <li>
+      <a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#printf-integer-formatting">printf integer formatting</a>
+          </li>
+      <li>
+      <a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#formatting-floating-point-numbers-with-printf">formatting floating point numbers with printf</a>
+          </li>
+      <li>
+      <a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#printf-string-formatting">printf string formatting</a>
+          </li>
+      <li>
+      <a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#printf-special-characters">printf special characters</a>
+          </li>
+      <li>
+      <a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#related-printf-content">Related printf content</a>
+          </li>
+  
+      </ol></div>
+
+
+  <form class="toc-mobile toc toc-menu">
+  <select><option value="">Table of Contents</option><option value="#printf-formatting-with-perl-and-java">1 - printf formatting with Perl and Java</option><option value="#a-summary-of-printf-format-specifiers">2 - A summary of printf format specifiers</option><option value="#controlling-integer-width-with-printf">3 - Controlling integer width with printf</option><option value="#left-justifying-printf-integer-output">4 - Left-justifying printf integer output</option><option value="#the-printf-integer-zero-fill-option">5 - The printf integer zero-fill option</option><option value="#printf-integer-formatting">6 - printf integer formatting</option><option value="#formatting-floating-point-numbers-with-printf">7 - formatting floating point numbers with printf</option><option value="#printf-string-formatting">8 - printf string formatting</option><option value="#printf-special-characters">9 - printf special characters</option><option value="#related-printf-content">10 - Related printf content</option></select></form>
+
+
+</div>
+
+
+
+<p>Summary:&nbsp;This page is a <em>printf</em> formatting cheat sheet. I originally created this cheat sheet for my own purposes, and then thought I would share it here.</p>
+
+<p>A great thing about the <code>printf</code> formatting syntax is that the format specifiers you can use are very similar — if not identical — between different languages, including C, C++, Java, Perl, PHP, Ruby, Scala, and others. This means that your <code>printf</code> knowledge is reusable, which is a good thing.</p>
+
+<p>&nbsp;</p>
+<!--break-->
+
+
+
+<a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#top" class="back-to-top">Back to top</a>
+
+<h2 id="printf-formatting-with-perl-and-java">printf formatting with Perl and Java</h2>
+
+
+<p>In this cheat sheet I’ll show all the examples using Perl, but at first it might help to see one example using both Perl and Java. Therefore, here’s a simple Perl <code>printf</code> example to get things started:</p>
+
+<pre>printf("the %s jumped over the %s, %d times", "cow", "moon", 2);
+</pre>
+
+<p>And here are three different Java <code>printf</code> examples, using different string formatting methods that are available to you in the Java programming language:</p>
+
+<pre>System.out.format("the %s jumped over the %s, %d times", "cow", "moon", 2);
+System.err.format("the %s jumped over the %s, %d times", "cow", "moon", 2);
+String result = String.format("the %s jumped over the %s, %d times", "cow", "moon", 2);
+</pre>
+
+<p>As you can see in that last <code>String.format</code>&nbsp;example, that line of code doesn’t print any output, while the first line prints to standard output, and the second line prints to standard error.</p>
+
+<p>In the remainder of this document I’ll use Perl examples, but again, the actual format specifier strings can be used in many different languages.</p>
+
+
+
+<a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#top" class="back-to-top">Back to top</a>
+
+<h2 id="a-summary-of-printf-format-specifiers">A summary of printf format specifiers</h2>
+
+
+<p>Here’s a quick summary of the available <code>printf</code> format specifiers:</p>
+
+<table><tbody><tr><td>%c</td>
+			<td>character</td>
+		</tr><tr><td>%d</td>
+			<td>decimal (integer) number (base 10)</td>
+		</tr><tr><td>%e</td>
+			<td>exponential floating-point number</td>
+		</tr><tr><td>%f</td>
+			<td>floating-point number</td>
+		</tr><tr><td>%i</td>
+			<td>integer (base 10)</td>
+		</tr><tr><td>%o</td>
+			<td>octal number (base 8)</td>
+		</tr><tr><td>%s</td>
+			<td>a string of characters</td>
+		</tr><tr><td>%u</td>
+			<td>unsigned decimal (integer) number</td>
+		</tr><tr><td>%x</td>
+			<td>number in hexadecimal (base 16)</td>
+		</tr><tr><td>%%</td>
+			<td>print a percent sign</td>
+		</tr><tr><td>\%</td>
+			<td>print a percent sign</td>
+		</tr></tbody></table><a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#top" class="back-to-top">Back to top</a>
+
+<h2 id="controlling-integer-width-with-printf">Controlling integer width with printf</h2>
+
+
+<p>The <code>%3d</code> specifier is used with integers, and means a minimum width of three spaces, which, by default, will be right-justified:</p>
+
+<table><tbody><tr><td>printf("%3d", 0);</td>
+			<td class="text-right code-font">0</td>
+		</tr><tr><td>printf("%3d", 123456789);</td>
+			<td class="text-right code-font">123456789</td>
+		</tr><tr><td>printf("%3d", -10);</td>
+			<td class="text-right code-font">-10</td>
+		</tr><tr><td>printf("%3d", -123456789);</td>
+			<td class="text-right code-font">-123456789</td>
+		</tr></tbody></table><a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#top" class="back-to-top">Back to top</a>
+
+<h2 id="left-justifying-printf-integer-output">Left-justifying printf integer output</h2>
+
+
+<p>To left-justify integer output with <code>printf</code>, just add a minus sign (<code>-</code>) after the <code>%</code> symbol, like this:</p>
+
+<table><tbody><tr><td>printf("%-3d", 0);</td>
+			<td class="text-left code-font">0</td>
+		</tr><tr><td>printf("%-3d", 123456789);</td>
+			<td class="text-left code-font">123456789</td>
+		</tr><tr><td>printf("%-3d", -10);</td>
+			<td class="text-left code-font">-10</td>
+		</tr><tr><td>printf("%-3d", -123456789);</td>
+			<td class="text-left code-font">-123456789</td>
+		</tr></tbody></table><a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#top" class="back-to-top">Back to top</a>
+
+<h2 id="the-printf-integer-zero-fill-option">The printf integer zero-fill option</h2>
+
+
+<p>To zero-fill your <code>printf</code> integer output, just add a zero (<code>0</code>) after the <code>%</code> symbol, like this:</p>
+
+<table><tbody><tr><td>printf("%03d", 0);</td>
+			<td class="text-right code-font">000</td>
+		</tr><tr><td>printf("%03d", 1);</td>
+			<td class="text-right code-font">001</td>
+		</tr><tr><td>printf("%03d", 123456789);</td>
+			<td class="text-right code-font">123456789</td>
+		</tr><tr><td>printf("%03d", -10);</td>
+			<td class="text-right code-font">-10</td>
+		</tr><tr><td>printf("%03d", -123456789);</td>
+			<td class="text-right code-font">-123456789</td>
+		</tr></tbody></table><a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#top" class="back-to-top">Back to top</a>
+
+<h2 id="printf-integer-formatting">printf integer formatting</h2>
+
+
+<p>As a summary of <code>printf</code> integer formatting, here’s a little collection of integer formatting examples. Several different options are shown, including a minimum width specification, left-justified, zero-filled, and also a plus sign for positive numbers.</p>
+
+<table><tbody><tr><th>Description</th>
+			<th>Code</th>
+			<th>Result</th>
+		</tr><tr><td>At least five wide</td>
+			<td>printf("'%5d'", 10);</td>
+			<td class="text-right code-font">'&nbsp;&nbsp;&nbsp;10'</td>
+		</tr><tr><td>At least five-wide, left-justified</td>
+			<td>printf("'%-5d'", 10);</td>
+			<td class="text-right code-font">'10&nbsp;&nbsp;&nbsp;'</td>
+		</tr><tr><td>At least five-wide, zero-filled</td>
+			<td>printf("'%05d'", 10);</td>
+			<td class="text-right code-font">'00010'</td>
+		</tr><tr><td>At least five-wide, with a plus sign</td>
+			<td>printf("'%+5d'", 10);</td>
+			<td class="text-right code-font">'&nbsp;&nbsp;+10'</td>
+		</tr><tr><td>Five-wide, plus sign, left-justified</td>
+			<td>printf("'%-+5d'", 10);</td>
+			<td class="text-right code-font">'+10&nbsp;&nbsp;'</td>
+		</tr></tbody></table><div class="btf">
+<script async="" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/f(2).txt"></script><!-- 336x280, DD, Programming --><ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-5530641073697401" data-ad-slot="0471404085" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><iframe width="336" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0px;width:336px;height:280px;" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/saved_resource(1).html"></iframe></ins></ins></ins>
+<script>
+<!--//--><![CDATA[// ><!--
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+//--><!]]>
+</script></div>
+
+
+<script>
+<!--//--><![CDATA[// ><!--
+
+$(document).ready(function() {
+if (adblock) {
+    // get the uri
+    let uri = getUri().substring(1);
+    let initUri = firstNChars(uri, 4);
+
+    // get the right books for the uri
+    let books = [];
+    if (booksMap[initUri] === undefined) {
+        books = popularBooks;
+    } else {
+        books = booksMap[initUri];
+    }
+    books = books.concat(myBooks);
+
+    shuffle(books);
+    let twoBooks = books.slice(0,2)
+    for (i = 0; i < twoBooks.length; i++) {
+        let bookHtml = htmlFromBook(twoBooks[i]);
+        $(".btf").append(bookHtml);
+    } 
+}
+});
+
+//--><!]]>
+</script><a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#top" class="back-to-top">Back to top</a>
+
+<h2 id="formatting-floating-point-numbers-with-printf">formatting floating point numbers with printf</h2>
+
+
+<p>Here are several examples showing how to format floating-point numbers with <code>printf</code>:</p>
+
+<table><tbody><tr><th>Description</th>
+			<th>Code</th>
+			<th>Result</th>
+		</tr><tr><td>Print one position after the decimal</td>
+			<td>printf("'%.1f'", 10.3456);</td>
+			<td class="text-right code-font">'10.3'</td>
+		</tr><tr><td>Two positions after the decimal</td>
+			<td>printf("'%.2f'", 10.3456);</td>
+			<td class="text-right code-font">'10.35'</td>
+		</tr><tr><td>Eight-wide, two positions after the decimal</td>
+			<td>printf("'%8.2f'", 10.3456);</td>
+			<td class="text-right code-font">'&nbsp;&nbsp;&nbsp;10.35'</td>
+		</tr><tr><td>Eight-wide, four positions after the decimal</td>
+			<td>printf("'%8.4f'", 10.3456);</td>
+			<td class="text-right code-font">'&nbsp;10.3456'</td>
+		</tr><tr><td>Eight-wide, two positions after the decimal, zero-filled</td>
+			<td>printf("'%08.2f'", 10.3456);</td>
+			<td class="text-right code-font">'00010.35'</td>
+		</tr><tr><td>Eight-wide, two positions after the decimal, left-justified</td>
+			<td>printf("'%-8.2f'", 10.3456);</td>
+			<td class="text-right code-font">'10.35&nbsp;&nbsp;&nbsp;'</td>
+		</tr><tr><td>Printing a much larger number with that same format</td>
+			<td>printf("'%-8.2f'", 101234567.3456);</td>
+			<td class="text-right code-font">'101234567.35'</td>
+		</tr></tbody></table><a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#top" class="back-to-top">Back to top</a>
+
+<h2 id="printf-string-formatting">printf string formatting</h2>
+
+
+<p>Here are several examples that show how to format string output with <code>printf</code>:</p>
+
+<table><tbody><tr><th>Description</th>
+			<th>Code</th>
+			<th>Result</th>
+		</tr><tr><td>A simple string</td>
+			<td>printf("'%s'", "Hello");</td>
+			<td class="text-right code-font">'Hello'</td>
+		</tr><tr><td>A string with a minimum length</td>
+			<td>printf("'%10s'", "Hello");</td>
+			<td class="text-right code-font">'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello'</td>
+		</tr><tr><td>Minimum length, left-justified</td>
+			<td>printf("'%-10s'", "Hello");</td>
+			<td class="text-right code-font">'Hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'</td>
+		</tr></tbody></table><a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#top" class="back-to-top">Back to top</a>
+
+<h2 id="printf-special-characters">printf special characters</h2>
+
+
+<p>The following character sequences have a special meaning when used as <code>printf</code> format specifiers:</p>
+
+<table><tbody><tr><td>\a</td>
+			<td>audible alert</td>
+		</tr><tr><td>\b</td>
+			<td>backspace</td>
+		</tr><tr><td>\f</td>
+			<td>form feed</td>
+		</tr><tr><td>\n</td>
+			<td>newline, or linefeed</td>
+		</tr><tr><td>\r</td>
+			<td>carriage return</td>
+		</tr><tr><td>\t</td>
+			<td>tab</td>
+		</tr><tr><td>\v</td>
+			<td>vertical tab</td>
+		</tr><tr><td>\\</td>
+			<td>backslash</td>
+		</tr></tbody></table><p>As you can see from that last example, because the backslash character itself is treated specially, you have to print two backslash characters in a row to get one backslash character to appear in your output.</p>
+
+<p>Here are a few examples of how to use these special characters:</p>
+
+<table><tbody><tr><th>Description</th>
+			<th>Code</th>
+			<th>Result</th>
+		</tr><tr><td>Insert a tab character in a string</td>
+			<td>printf("Hello\tworld");</td>
+			<td class="text-left code-font">Hello world</td>
+		</tr><tr><td>Insert a newline character in a string</td>
+			<td>printf("Hello\nworld");</td>
+			<td class="text-left code-font">Hello<br>
+			world</td>
+		</tr><tr><td>Typical use of the newline character</td>
+			<td>printf("Hello world\n");</td>
+			<td class="text-left code-font">Hello world</td>
+		</tr><tr><td>A DOS/Windows path with backslash characters</td>
+			<td>printf("C:\\Windows\\System32\\");</td>
+			<td class="text-left code-font">C:\Windows\System32\</td>
+		</tr></tbody></table><div class="btf">
+<script async="" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/f(2).txt"></script><!-- 336x280, DD, Programming --><ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-5530641073697401" data-ad-slot="0471404085" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><iframe width="336" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0px;width:336px;height:280px;" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/saved_resource(2).html"></iframe></ins></ins></ins>
+<script>
+<!--//--><![CDATA[// ><!--
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+//--><!]]>
+</script></div>
+
+
+<script>
+<!--//--><![CDATA[// ><!--
+
+$(document).ready(function() {
+if (adblock) {
+    // get the uri
+    let uri = getUri().substring(1);
+    let initUri = firstNChars(uri, 4);
+
+    // get the right books for the uri
+    let books = [];
+    if (booksMap[initUri] === undefined) {
+        books = popularBooks;
+    } else {
+        books = booksMap[initUri];
+    }
+    books = books.concat(myBooks);
+
+    shuffle(books);
+    let twoBooks = books.slice(0,2)
+    for (i = 0; i < twoBooks.length; i++) {
+        let bookHtml = htmlFromBook(twoBooks[i]);
+        $(".btf").append(bookHtml);
+    } 
+}
+});
+
+//--><!]]>
+</script><a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#top" class="back-to-top">Back to top</a>
+
+<h2 id="related-printf-content">Related printf content</h2>
+
+
+<p>Here are a few links to other “printf” tutorials on my website:</p>
+
+<ul><li><a href="https://alvinalexander.com/blog/post/perl/reference-page-perl-printf-formatting-format-cheat-sheet">Perl printf formatting examples</a></li>
+	<li><a href="https://alvinalexander.com/blog/post/java/java-string-formatted-format-output-text">Java printf - formatting Java printing with System.out.format</a></li>
+</ul><p>And here’s a link to <a href="http://docs.oracle.com/javase/6/docs/api/java/util/Formatter.html#detail">the Java formatter javadoc</a>.</p>
+
+
+<a href="https://alvinalexander.com/programming/printf-format-cheat-sheet#top" class="back-to-top">Back to top</a>
+</div></div>
+      
+        <div class="content_category">
+            <div class="field field--name-category field--type-entity-reference field--label-hidden field__item"><a href="https://alvinalexander.com/java" hreflang="en">java</a></div>
+      </div>
+        <div class="content_tags">
+      <div class="field field--name-tags field--type-entity-reference field--label-hidden field__items">
+              <div class="field__item"><a href="https://alvinalexander.com/taxonomy/term/2669" hreflang="en">string</a></div>
+              <div class="field__item"><a href="https://alvinalexander.com/taxonomy/term/2563" hreflang="en">source</a></div>
+              <div class="field__item"><a href="https://alvinalexander.com/taxonomy/term/2355" hreflang="en">ruby</a></div>
+              <div class="field__item"><a href="https://alvinalexander.com/taxonomy/term/2257" hreflang="en">reference</a></div>
+              <div class="field__item"><a href="https://alvinalexander.com/taxonomy/term/2130" hreflang="en">printf</a></div>
+              <div class="field__item"><a href="https://alvinalexander.com/taxonomy/term/2010" hreflang="en">perl</a></div>
+              <div class="field__item"><a href="https://alvinalexander.com/taxonomy/term/1386" hreflang="en">java</a></div>
+              <div class="field__item"><a href="https://alvinalexander.com/taxonomy/term/1022" hreflang="en">format</a></div>
+              <div class="field__item"><a href="https://alvinalexander.com/category/tags/cheatsheet" hreflang="en">cheatsheet</a></div>
+              <div class="field__item"><a href="https://alvinalexander.com/taxonomy/term/334" hreflang="en">c++</a></div>
+              <div class="field__item"><a href="https://alvinalexander.com/taxonomy/term/333" hreflang="en">c</a></div>
+              <div class="field__item"><a href="https://alvinalexander.com/category/tags/scala" hreflang="en">scala</a></div>
+              <div class="field__item"><a href="https://alvinalexander.com/taxonomy/term/2604" hreflang="en">sprintf</a></div>
+          </div>
+  </div>
+        </div>
+
+
+
+    
+
+        
+        
+            <div class="similar">
+                <div class="views-element-container"><div class="view view-similar-by-terms view-id-similar_by_terms view-display-id-default js-view-dom-id-04852810c9cc86b4d062502116f45c822f13b40f0a104b6814d5c6f498b50276">
+  
+    
+      
+      <div class="view-content">
+      <div class="item-list">
+  
+  <ul>
+
+          <li><div class="views-field views-field-title"><span class="field-content"><a href="https://alvinalexander.com/blog/post/java/use-string-format-java-string-output" hreflang="en">Java String formatting with the String.format method (like `sprintf`)</a></span></div></li>
+          <li><div class="views-field views-field-title"><span class="field-content"><a href="https://alvinalexander.com/blog/post/java/java-string-formatted-format-output-text" hreflang="en">Java “printf” - formatting output with System.out.format</a></span></div></li>
+          <li><div class="views-field views-field-title"><span class="field-content"><a href="https://alvinalexander.com/java/simpledateformat-convert-date-to-string-formatted-parse" hreflang="en">Java SimpleDateFormat example: How to convert a Date to a formatted String</a></span></div></li>
+          <li><div class="views-field views-field-title"><span class="field-content"><a href="https://alvinalexander.com/scala/scala-string-formatting-java-string-format-method" hreflang="en">The Scala String format approach (and Java String.format)</a></span></div></li>
+          <li><div class="views-field views-field-title"><span class="field-content"><a href="https://alvinalexander.com/blog/post/java/how-extract-multiple-html-tags-groups-multiline-string" hreflang="en">Java - extract multiple HTML tags (groups) from a multiline String</a></span></div></li>
+          <li><div class="views-field views-field-title"><span class="field-content"><a href="https://alvinalexander.com/java/java-freemarker-generate-render-output-as-string" hreflang="en">How to generate Java FreeMarker output as a String</a></span></div></li>
+    
+  </ul>
+
+</div>
+
+    </div>
+  
+          </div>
+</div>
+
+            </div>
+
+            <div class="below_content">
+                
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="my_books">
+<h2 class="title">books i’ve written</h2>
+
+<table border="​&quot;0&quot;" cellpadding="4" cellspacing="​&quot;2&quot;" class="​&quot;noborder&quot;" width="​&quot;100%&quot;"><tbody><tr><td><a href="http://goo.gl/eV4PtU" target="_blank"><img height="190px" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/scala-cookbook-oreilly-alvin-alexander.gif" title="Scala Cookbook"></a></td>
+			<td><a href="http://goo.gl/wqK5ty" target="_blank"><img height="190px" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/HowISoldMyBusiness-300pxH-5.jpg" title="How I Sold My Business"></a></td>
+			<td><a href="http://goo.gl/GX1VDx" target="_blank"><img height="190px" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/V6-Flattened-FrontOnly-300pxH-60b.jpg" title="A Survival Guide for New Consultants"></a></td>
+			<td><a href="https://alvinalexander.com/scala/learning-functional-programming-in-scala-book" target="_blank"><img height="190px" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/functional-programming-simplified-190h.jpg" title="Functional Programming, Simplified"></a></td>
+		</tr></tbody></table></div>
+</div>
+      
+
+                                <div class="views-element-container"><div class="recent-content view view-content-recent view-id-content_recent view-display-id-default js-view-dom-id-a6c02849b6a217aad17238bafe4a33f1e90e47b679bde5576e5d9bc7b7d85775">
+  
+    
+      
+      <div class="view-content">
+      <div class="item-list">
+  
+  <ul>
+
+          <li><div class="views-field views-field-title"><span class="field-content"><a href="https://alvinalexander.com/misc/biopsy-tissue-surgery-shows-cancer-but-december-2018" hreflang="en">The biopsy of the tissue from your surgery shows that you have cancer, but ...</a></span></div></li>
+          <li><div class="views-field views-field-title"><span class="field-content"><a href="https://alvinalexander.com/misc/hemingway-each-book-should-be-new-beginning" hreflang="en">Hemingway: Each book should be a new beginning</a></span></div></li>
+          <li><div class="views-field views-field-title"><span class="field-content"><a href="https://alvinalexander.com/photos/scala-principle-of-least-power-li-haoyi" hreflang="en">Principle of Least Power (Scala)</a></span></div></li>
+          <li><div class="views-field views-field-title"><span class="field-content"><a href="https://alvinalexander.com/scala/word-of-the-day-scala-shell-script" hreflang="en">A Scala “Word of the day” shell script</a></span></div></li>
+          <li><div class="views-field views-field-title"><span class="field-content"><a href="https://alvinalexander.com/misc/milleniall-phrase-if-i-had-bat-rage-on-this-wall" hreflang="en">If I had a bat, I’d rage on this wall</a></span></div></li>
+          <li><div class="views-field views-field-title"><span class="field-content"><a href="https://alvinalexander.com/photos/functional-programming-leads-to-happiness" hreflang="en">Functional programming leads to happiness</a></span></div></li>
+    
+  </ul>
+
+</div>
+
+    </div>
+  
+          </div>
+</div>
+
+                
+            </div>
+
+            
+
+        
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  </div>
+
+                </div>
+            </div> 
+        </div>     </div>     
+    <div class="footer">
+        <div class="footer-inner">
+
+            <div id="mobile">
+                <div id="footer-links">Links:</div>
+                <div class="field-items">
+                    <a href="https://alvinalexander.com/">front page</a>
+                    <a href="https://twitter.com/alvinalexander">me on twitter</a>
+                    <a href="https://alvinalexander.com/search">search</a>
+                    <a href="https://alvinalexander.com/privacy">privacy</a>
+                </div>             </div>
+
+            <div id="desktop">
+                                <footer role="contentinfo">
+                      <div class="region region-footer">
+    <div id="block-footer" class="block block-block-content block-block-content623e89b2-3d65-4d44-9862-6996c08c3abd">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><!-- first column -->
+<div class="footer-col-first">
+<dl class="links"><dt>java</dt>
+	<dd class="first"><a href="https://alvinalexander.com/java/appletcenter.shtml">java applets</a></dd>
+	<dd><a href="https://alvinalexander.com/java/edu/qanda/">java faqs</a></dd>
+	<dd><a href="https://alvinalexander.com/java/misc/">misc content</a></dd>
+	<dd><a href="https://alvinalexander.com/java/jwarehouse/">java source code</a></dd>
+	<dd><a href="https://alvinalexander.com/java/edu/TestProjects/">test projects</a></dd>
+	<dd><a href="https://alvinalexander.com/java/lejos/">lejos</a></dd>
+</dl><dl class="links"><dt>Perl</dt>
+	<dd class="first"><a href="https://alvinalexander.com/perl/edu/qanda/">perl faqs</a></dd>
+	<dd><a href="https://alvinalexander.com/perl/pgms/">programs</a></dd>
+	<dd><a href="https://alvinalexander.com/perl/recipes/">perl recipes</a></dd>
+	<dd><a href="https://alvinalexander.com/perl/edu/">perl tutorials</a></dd>
+	<dd>&nbsp;</dd>
+</dl></div>
+<!-- second column -->
+
+<div class="footer-col">
+<dl class="links"><dt>Unix</dt>
+	<dd class="first"><a href="https://alvinalexander.com/unix/man/">man (help) pages</a></dd>
+	<dd><a href="https://alvinalexander.com/unix/edu/examples/">unix by example</a></dd>
+	<dd><a href="https://alvinalexander.com/unix/edu/">tutorials</a></dd>
+</dl><dl class="links"><dt>source code<br>
+	warehouse</dt>
+	<dd class="first"><a href="https://alvinalexander.com/java/jwarehouse/">java examples</a></dd>
+	<dd><a href="https://alvinalexander.com/drupal-code-examples/">drupal examples</a></dd>
+</dl></div>
+<!-- 3rd column -->
+
+<div class="footer-col">
+<dl class="links"><dt>misc</dt>
+	<dd class="first"><a href="https://alvinalexander.com/privacy-policy">privacy policy</a></dd>
+	<dd><a href="https://alvinalexander.com/terms">terms&nbsp;&amp; conditions</a></dd>
+	<dd><a href="http://eepurl.com/BhYt">subscribe</a></dd>
+	<dd><a href="http://devdaily.us1.list-manage.com/unsubscribe?u=bf478771d83401629ab773851&amp;id=ea7b9f711b">unsubscribe</a></dd>
+	<dd><a href="https://alvinalexander.com/wincvs/">wincvs tutorial</a></dd>
+	<dd><a href="https://alvinalexander.com/fpa/">function point<br>
+	analysis (fpa)</a></dd>
+	<dd><a href="https://alvinalexander.com/FunctionPoints/">fpa tutorial</a></dd>
+	<dd>&nbsp;</dd>
+	<dd>&nbsp;</dd>
+</dl></div>
+<!-- 4th column -->
+
+<div class="footer-col footer-col-last">
+<dl class="links"><dt>Other</dt>
+	<dd><a href="http://m.alvinalexander.com/" title="mobile site">mobile website</a></dd>
+	<dd><a href="https://alvinalexander.com/rss.xml" title="rss feed">rss feed</a></dd>
+	<dd><a href="https://alvinalexander.com/photos" title="my photo galley">my photos</a></dd>
+	<dd><a href="http://www.onemansalaska.com/" title="a blog about living in alaska">life in alaska</a></dd>
+	<dd><a href="http://www.howisoldmybusiness.com/" title="personal diary about how to buy and sell a business">how i sold my business</a></dd>
+	<dd><a href="http://www.alaskasquirrel.com/" title="living in talkeetna, alaska">living in talkeetna, alaska</a></dd>
+	<dd><a href="https://alvinalexander.com/bookmarks" title="my bookmarks">my bookmarks</a></dd>
+	<dd><a href="https://alvinalexander.com/category/tags/inspirational-quotes" title="inspirational and motivational quotes">inspirational quotes</a></dd>
+	<dd><a href="https://alvinalexander.com/source-code-snippets" title="source code snippets">source code snippets</a></dd>
+</dl></div>
+</div>
+      
+  </div>
+
+  </div>
+
+                </footer>
+                            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+    
+
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/997","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","user":{"uid":0,"permissionsHash":"673b761f84c40d51efe4268f7bb8a2dc0cae343bebbb8a52cbf422ea696d850c"}}</script>
+<script src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/js_fnKDvIelrZDDNe9n6ExW7VTB3QPRSFGaVMM91ixyFQ0.js"></script>
+
+
+    <script>
+    $(document).ready(function() {
+
+    // get the uri
+    let uri = getUri().substring(1);
+    let initUri = firstNChars(uri, 4);
+
+    // get the right books for the uri
+    let books = [];
+    if (booksMap[initUri] === undefined) {
+        books = popularBooks;
+    } else {
+        books = booksMap[initUri];
+    }
+
+    if (adblock) {
+      // two books from `books`
+      shuffle(books);
+      let twoBooks = books.slice(0,2);
+
+      // add one of my books
+      shuffle(myBooks);
+      let myBook = myBooks.slice(0,1);
+      let allBooks = twoBooks.concat(myBook);
+      shuffle(allBooks);
+      for (i = 0; i < allBooks.length; i++) {
+          let bookHtml = htmlFromBook(allBooks[i]);
+          $("#lhs-books-block").append(bookHtml);
+      } 
+    } else {
+      books = myBooks;
+      shuffle(books);
+      let booksToShow = books.slice(0,1);
+      for (i = 0; i < booksToShow.length; i++) {
+          let bookHtml = htmlFromBook(booksToShow[i]);
+          $("#lhs-books-block").append(bookHtml);
+      }
+    }
+
+    });
+    </script>
+
+  <script src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/prism.js"></script>
+
+  
+
+
+
+
+
+<iframe id="google_osd_static_frame_7424775651942" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/saved_resource(3).html"></iframe></body><iframe id="google_shimpl" style="display: none;" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/saved_resource(4).html"></iframe><iframe id="google_esf" name="google_esf" src="./A printf format reference page (cheat sheet) _ alvinalexander.com_files/zrt_lookup.html" data-ad-client="ca-pub-5530641073697401" style="display: none;"></iframe></html>

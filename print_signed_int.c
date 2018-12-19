@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "math.h"
 
 void pf_int(va_list ap)
 {
@@ -25,7 +26,6 @@ void pf_int(va_list ap)
 	i = sizeof(int) * 4;
 	int_str = ft_strnew(i + 1);	/* create block of memory */
 	sign = (num < 0 ? -1 : 1);	/* determine if number is less than 0 */
-	//printf("sign: %d\n", sign);
 	int_str[i] = '\0';
 	while (--i > 0) /* will take 15 characters 16th is '\0' */
 	{
@@ -33,22 +33,51 @@ void pf_int(va_list ap)
 		{	
 			int_str[i] = ft_abs(num) % 10 + '0'; /* need to find abs of num; otherise its only returns junk values */
 			num /= 10;
-			//printf("string: %c\n", int_str[i]);
 		}
 	}
 	while (int_str[++i] == '0')
 		;
-	if (sign)
-	{
+	if (sign == -1)
 		ft_putchar('-');
-		while (int_str[i])
-		{
-			ft_putchar(int_str[i]);
-			i++;
-		}
-	}
+	while (int_str[i])
+		ft_putchar(int_str[i++]);
 	/* work backwards (write? return?)*/
 }
+
+// void pf_float(va_list ap)
+// {
+// 	printf("---- ENTERING pf_float ----\n");
+// 	double num;
+// 	static char *int_str;
+// 	static short i;
+// 	static short sign;
+
+// 	num = va_arg(ap, double);
+// 	i = sizeof(double) * 4;
+// 	int_str = ft_strnew(i + 1);	/* create block of memory */
+// 	sign = (num < 0 ? -1 : 1);	/* determine if number is less than 0 */
+// 	int_str[i] = '\0';
+// 	printf("num:  %f\n", num);
+// 	num = (int)(num * 100) % 100;
+// 	//printf("num:  %f\n", num);
+// 	while (--i > 0) /* will take 15 characters 16th is '\0' */
+// 	{
+// 		if (int_str[i] != '-' && int_str[i] != '.')
+// 		{	
+// 			printf("int_str[i]: %d\n", int_str[i]);
+// 			int_str[i] = fabs(num) % 10.0 + '0';  /* need to find abs of num; otherise its only returns junk values */
+// 			num /= 10;
+// 		}
+// 		if (int_str[i] == '.')
+// 			num
+// 	}
+// 	while (int_str[++i] == '0')
+// 		;
+// 	if (sign == -1)
+// 		ft_putchar('-');
+// 	while (int_str[i])
+// 		ft_putchar(int_str[i++]);
+// }
 
 	// str[len] = copy % 10 + '0';
 	// while (copy /= 10)
@@ -60,7 +89,7 @@ void pf_signed(const char **pf, va_list ap)
 {
 	if (*(*pf) == 'd' || *(*pf) == 'i') /* signed decimal integer */
 		pf_int(ap);
-	// else if (*(*pf) == 'f')   Decimal floating point, lowercase 
+	// else if (*(*pf) == 'f')    Decimal floating point, lowercase 
 	// 	pf_float(ap);
 	// else if (*(*pf) == 'e') /* Scientific notation (mantissa/exponent), lowercase */
 	// 	pf_char(ap);
