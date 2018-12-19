@@ -122,7 +122,7 @@ void get_type(const char **pf, va_list ap, pf_token *ftoken)
 	if (pf_copy[i] == 'd' || pf_copy[i] == 'i' || pf_copy[i] == 'f' || pf_copy[i] == 'e' || pf_copy[i] == 'g')
 	{
 		ftoken->ctype = pf_copy[i];
-		pf_signed(pf, ap);
+		pf_signed(pf, ap, ftoken);
 	}
 	else if (pf_copy[i] == 'u' || pf_copy[i] == 'x' || pf_copy[i] == 'X' || pf_copy[i] == 'o' || pf_copy[i] == 'p' || pf_copy[i] == 'a')
 	{

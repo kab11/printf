@@ -78,30 +78,25 @@ int main(void)
 	// ft_printf("Characters (ft_printf): %c\n", 't');
 	// ft_printf("String (ft_printf): %s\n", "there you go smarty pants");
 
-	// ft_printf("Signed Decimal (ft_printf): %d\n", 123);
-	// ft_printf("Signed Decimal (ft_printf): %d\n", -123);
-	// ft_printf("Signed Integer (ft_printf): %i\n", 123);
-	// ft_printf("Signed Integer (ft_printf): %i\n", -123);
+	ft_printf("Signed Decimal (ft_printf): %d\n", 123);
+	ft_printf("Signed Decimal (ft_printf): %d\n", -123);
+	ft_printf("l => unsigned long int: %ld\n", 650000L);
+	ft_printf("Signed Integer (ft_printf): %i\n", 123);
+	ft_printf("Signed Integer (ft_printf): %i\n", -123);
 	// ft_printf("Signed Integer (ft_printf): %f\n", 123.123456);
 	// ft_printf("Signed Integer (ft_printf): %.3f\n", -123.123456);
-
-	// ft_printf("Unsigned Integer (ft_printf): %u\n", 123);
-	// ft_printf("Unsigned Integer (ft_printf): %u\n", -123);
-	// // ft_printf("printf: %llx\n", UINTMAX_MAX);
-	// ft_printf("Unsigned hexadecimal integer, lowercase (ft_printf): %x\n", -2545);
-	// ft_printf("Unsigned hexadecimal integer, LOWERCASE (ft_printf): %x\n", 2545);
-	// ft_printf("Unsigned hexadecimal integer, UPPERCASE (ft_printf): %X\n", -2545);
-	// ft_printf("Unsigned hexadecimal integer, UPPERCASE (ft_printf): %X\n", 2545);
-	// ft_printf("Unsigned octal (ft_printf): %o\n", NULL);
-	// ft_printf("Unsigned octal (ft_printf): %o\n", 33);
+	ft_printf("Unsigned Integer (ft_printf): %u\n", -123);
+	// ft_printf("printf: %llx\n", UINTMAX_MAX);
+	ft_printf("Unsigned hexadecimal integer, lowercase (ft_printf): %x\n", -2545);
+	ft_printf("Unsigned hexadecimal integer, LOWERCASE (ft_printf): %x\n", 2545);
+	ft_printf("Unsigned hexadecimal integer, UPPERCASE (ft_printf): %X\n", -2545);
+	ft_printf("Unsigned hexadecimal integer, UPPERCASE (ft_printf): %X\n", 2545);
+	ft_printf("Unsigned octal (ft_printf): %o\n", NULL);
+	ft_printf("Unsigned octal (ft_printf): %o\n", 33);
 	ft_printf("%p\n", b); /* 7ffeed2309f8 */;
-	printf("%p\n", b); /* 7ffeed2309f8 */;
 	// ft_printf("Hexidecimal floating point, lowercase (ft_printf): %a\n", 1.000001);
 	// ft_printf("Hexidecimal floating point, uppercase (ft_printf): %A\n", 1.000001);
-	// ft_printf("Signed Integer (ft_printf): %i\n", -123);
-	// ft_printf("Signed Integer (ft_printf): %i\n", -123);
 	// printf("hhd: %hhd\n", 45);
-	// printf("d: %d\n", 45);
 
 	// printf("printf: %o\n", 123123);
 	// ft_printf("%o\n", 123123);

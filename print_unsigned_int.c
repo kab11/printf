@@ -15,77 +15,7 @@
 /* uintmax_t is an unsigned integer which is the greatest upported width; they are
  * the integer types which have the greatest limits */
 
-// void pf_dec(va_list ap)
-// {
-// 	printf("---- ENTERING pf_dec ----\n");
-// 	/* needs to be changed from an int into a char in order to be written */
-// 	unsigned int num;
-// 	static char *int_str;
-// 	static short i;
-
-// 	num = va_arg(ap, unsigned int);
-// 	i = sizeof(int) * 4;
-// 	int_str = ft_strnew(i + 1);	/* create block of memory */
-// 	int_str[i] = '\0';	
-// 	while (--i > 0) /* will take 15 characters 16th is '\0' */
-// 	{
-// 		int_str[i] = num % 10 + '0';
-// 		num /= 10;
-// 	}
-// 	while (int_str[++i] == '0')
-// 		;
-// 	while (int_str[i])
-// 	{
-// 		ft_putchar(int_str[i]);
-// 		i++;
-// 	}
-// }
-
-// void pf_hex_oct(va_list ap, type_token type)
-// {
-// 	printf("---- ENTERING pf_hex_oct ----\n");
-// 	unsigned int num;
-// 	static char *int_str;
-// 	static short i;
-
-// 	num = (uintmax_t)va_arg(ap, unsigned int);
-// 	i = sizeof(int) * 4;
-// 	int_str = ft_strnew(i + 1);	/* create block of memory */
-// 	int_str[i] = '\0';
-// 	while (--i > 0) /* will take 15 characters 16th is '\0' */
-// 	{
-// 		if (type.x || type.X || type.p)
-// 		{
-// 			if (type.x || type.p)
-// 				int_str[i] = HEX[num & 0xF];
-// 			else
-// 				int_str[i] = HEX_UPPER[num & 0xF];
-// 			num >>= 4;
-// 		}
-// 		if (type.o)
-// 		{
-// 			int_str[i] = OCTAL[num & 0x7];
-// 			num >>= 3;
-// 		}
-// 	}
-// 	while (int_str[++i] == '0')
-// 		;
-// 	if (!int_str[i])
-// 			ft_putchar('0');
-// 	if (type.p)
-// 	{
-// 		int_str[--i] = 'x';
-// 		int_str[--i] = '0';
-// 	}
-// 	while (int_str[i])
-// 	{
-// 		ft_putchar(int_str[i]);
-// 		i++;
-// 	}
-// }
-
-/* uintmax_max */
-uintmax_t find_length_size(va_list ap, pf_token *ftoken)
+uintmax_t find_ulength_size(va_list ap, pf_token *ftoken)
 {
 	uintmax_t length;
 
@@ -110,7 +40,7 @@ void pf_base16(va_list ap, pf_token *ftoken, type_token *type)
 	static char *int_str;
 	static short i;
 
-	num = find_length_size(ap, ftoken);
+	num = find_ulength_size(ap, ftoken);
 	i = sizeof(int) * 4;
 	int_str = ft_strnew(i + 1);	/* create block of memory */
 	int_str[i] = '\0';	
@@ -138,24 +68,47 @@ void pf_base16(va_list ap, pf_token *ftoken, type_token *type)
 	}
 }
 
-void pf_base8(va_list ap, pf_token *ftoken, type_token *type)
+void pf_base10(va_list ap, pf_token *ftoken)
+{
+	printf("---- ENTERING pf_pf_base10 ----\n");
+	/* needs to be changed from an int into a char in order to be written */
+	uintmax_t num;
+	static char *int_str;
+	static short i;
+
+	num = find_ulength_size(ap, ftoken);
+	i = sizeof(int) * 4;
+	int_str = ft_strnew(i + 1);	/* create block of memory */
+	int_str[i] = '\0';	
+	while (--i > 0) /* will take 15 characters 16th is '\0' */
+	{
+		int_str[i] = num % 10 + '0';
+		num /= 10;
+	}
+	while (int_str[++i] == '0')
+		;
+	while (int_str[i])
+	{
+		ft_putchar(int_str[i]);
+		i++;
+	}
+}
+
+void pf_base8(va_list ap, pf_token *ftoken)
 {
 	printf("---- ENTERING pf_base8 ----\n");
 	uintmax_t num;
 	static char *int_str;
 	static short i;
 
-	num = find_length_size(ap, ftoken);
+	num = find_ulength_size(ap, ftoken);
 	i = sizeof(int) * 4;
 	int_str = ft_strnew(i + 1);	/* create block of memory */
 	int_str[i] = '\0';
 	while (--i > 0) /* will take 15 characters 16th is '\0' */
 	{
-		if (type->o)
-		{
-			int_str[i] = OCTAL[num & 0x7];
-			num >>= 3;
-		}
+		int_str[i] = OCTAL[num & 0x7];
+		num >>= 3;
 	}
 	while (int_str[++i] == '0')
 		;
@@ -175,15 +128,9 @@ void pf_unsigned(const char **pf, va_list ap, pf_token *ftoken)
 
 	ft_bzero(&type, sizeof(type)); /* ft_bzero to reset all type flags */
 	if (*(*pf) == 'o') /* unsigned octal */
-	{
-		type.o = 1;
-		pf_base8(ap, ftoken, &type);
-	}
+		pf_base8(ap, ftoken);
 	else if (*(*pf) == 'u')	/* unsigned deciaml integer */
-	{
-		type.u = 1;
-		pf_base16(ap, ftoken, &type);
-	}
+		pf_base10(ap, ftoken);
 	else if (*(*pf) == 'x')	 /* unsigned hexadecimal integer, lowercase */
 	{
 		type.x = 1;

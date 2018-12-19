@@ -77,7 +77,7 @@ void get_length(const char **pf, pf_token *ftoken);
 void get_type(const char **pf, va_list ap, pf_token *ftoken);
 
 /*  ------------------------ PRINT_SIGNED_INT ------------------------ */
-void pf_signed(const char **pf, va_list ap);
+void pf_signed(const char **pf, va_list ap, pf_token *ftoken);
 
 /*  ------------------------ PRINT_UNSIGNED INT ------------------------ */
 void pf_unsigned(const char **pf, va_list ap, pf_token *ftoken);
