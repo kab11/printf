@@ -49,9 +49,9 @@
 /* If both 0 and - flags are specified, the 0 flag is ignored. */
 /* If both + and space character flags are specified, the space character flag is ignored. */
 
-void get_flags(const char **pf, pf_token *ftoken)
+void get_flags(char **pf, pf_token *ftoken)
 {
-	const char *pf_copy;
+	char *pf_copy;
 	int i;
 
 	pf_copy = *pf;
@@ -77,9 +77,52 @@ void get_flags(const char **pf, pf_token *ftoken)
 	*pf = (*pf) + i;
 }
 
-void get_length(const char **pf, pf_token *ftoken)
+void get_width(char **pf, pf_token *ftoken)
 {
-	const char *pf_copy; // if lines are to long can use *(*pf) to save lines 
+	int i;
+	int tmp;
+
+	i = 0;
+	ftoken->width = ft_atoi(*pf);
+	tmp = ftoken->width;
+	while (tmp > 0)
+	{
+		tmp /= 10;
+		i++;
+	}
+	*pf = (*pf) + i;
+}
+
+
+	/* Set default precision to 6 */
+void get_precision(char **pf, pf_token *ftoken)
+{
+	int i;
+	int tmp;
+
+	i = 0;
+	if ((**pf) == 'f')
+		ftoken->precision = 6U;
+	else if ((**pf) == '.')
+	{
+		{
+			*pf = (*pf) + 1;
+			ftoken->precision = ft_atoi(*pf);
+		}
+		tmp = ftoken->precision;
+		while (tmp > 0)
+		{
+			tmp /= 10;
+			i++;
+		}
+	}
+	// printf("*pf_copy: ->%c<-\n", **pf);
+	*pf = (*pf) + i;
+}
+
+void get_length(char **pf, pf_token *ftoken)
+{
+	char *pf_copy; // if lines are to long can use *(*pf) to save lines 
 	int i;
 
 	pf_copy = *pf;
@@ -108,17 +151,21 @@ void get_length(const char **pf, pf_token *ftoken)
 			ftoken->j = 1;
 		if(pf_copy[i] == 't')
 			ftoken->t = 1;
-		*pf = (*pf) + ++i; // ++i accounts for if the length is 2 or 1 characters long 
+		// *pf = (*pf) + ++i; // ++i accounts for if the length is 2 or 1 characters long 
+		i++;
 	}
+	// printf("*pf_copy: ->%c<-\n", pf_copy[i]);
+	*pf = (*pf) + i;
 }
 
-void get_type(const char **pf, va_list ap, pf_token *ftoken)
+void get_type(char **pf, va_list ap, pf_token *ftoken)
 {
-	const char *pf_copy; // if lines are to long can use *(*pf) to save lines 
+	char *pf_copy; // if lines are to long can use *(*pf) to save lines 
 	int i;
 
 	pf_copy = *pf;
 	i = 0;
+	// printf("*pf_copy: ->%c<-\n", pf_copy[i]);
 	if (pf_copy[i] == 'd' || pf_copy[i] == 'i' || pf_copy[i] == 'f' || pf_copy[i] == 'e' || pf_copy[i] == 'g')
 	{
 		ftoken->ctype = pf_copy[i];
@@ -134,46 +181,15 @@ void get_type(const char **pf, va_list ap, pf_token *ftoken)
 		ftoken->ctype = pf_copy[i];
 		print_chars(pf, ap);
 	}
-	else if (pf_copy[i] == 'n')
-	{
-		ftoken->ctype = pf_copy[i];
-		//pf_other(const char **pf, va_list ap, pf_token *ftoken);
-	}
-	//printf("ctype: %c\n", ftoken->ctype);
 }
 
-int parse_params(const char *pf, va_list ap, pf_token *ftoken)
-{
-	get_flags(&pf, ftoken);		//check first for flag
-	if(((*pf) >= '1' && (*pf) <= '9'))
-	{
-		ftoken->width += ft_atoi(pf);
-		while (((*pf) >= '1' && (*pf) <= '9'))
-			pf++;
-	}
-	else if ((*pf) == '*')
-	{
-		ftoken->width = va_arg(ap, int);
-		pf++;
-	}
-	if ((*pf) == '.')
-	{
-		pf++;
-		if(((*pf) >= '1' && (*pf) <= '9'))
-		{
-		ftoken->precision += ft_atoi(pf);
-		while (((*pf) >= '1' && (*pf) <= '9'))
-			pf++;
-		}
-		else if ((*pf) == '*')
-		{
-			ftoken->precision = va_arg(ap, int);
-			pf++;
-		}
-	}
+int parse_params(char *pf, va_list ap, pf_token *ftoken)
+{	
+	get_flags(&pf, ftoken);
+	get_width(&pf, ftoken);
+	get_precision(&pf, ftoken);
 	get_length(&pf, ftoken);
-	//printf("*pf = %c\n", (*pf));
 	get_type(&pf, ap, ftoken);
-	write(1, "\n", 1);
+
 	return (0);
 }

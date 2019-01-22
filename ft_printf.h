@@ -21,6 +21,8 @@
 # include "libft.h"
 # include <stdint.h>
 # include "get_next_line/get_next_line.h"
+# include <float.h>
+# include <limits.h>
 
 # define HEX "0123456789abcdef"
 # define HEX_UPPER "0123456789ABCDEF" 
@@ -62,28 +64,34 @@ typedef struct pf_checks
 } type_token; //type token
 
 
-typedef struct pf_store
+typedef struct s_pf_store
 {
-    char c;
-    char *s;
-} pf_field;
+    long whole;
+    int i;
+    char *str;
+    long double deci;
+    char *decimal_str;
+    char *fstring;
+    int ret;
+    int sign;
+} t_pf_store;
 
 int ft_printf(const char *fmt, ...);
 
 /*  ------------------------ PARSING ------------------------ */
-int parse_params(const char *pf, va_list ap, pf_token *ftoken);
-void get_flags(const char **pf, pf_token *ftoken);
-void get_length(const char **pf, pf_token *ftoken);
-void get_type(const char **pf, va_list ap, pf_token *ftoken);
+int parse_params(char *pf, va_list ap, pf_token *ftoken);
+void get_flags(char **pf, pf_token *ftoken);
+void get_length(char **pf, pf_token *ftoken);
+void get_type(char **pf, va_list ap, pf_token *ftoken);
 
 /*  ------------------------ PRINT_SIGNED_INT ------------------------ */
-void pf_signed(const char **pf, va_list ap, pf_token *ftoken);
+void pf_signed(char **pf, va_list ap, pf_token *ftoken);
 
 /*  ------------------------ PRINT_UNSIGNED INT ------------------------ */
-void pf_unsigned(const char **pf, va_list ap, pf_token *ftoken);
+void pf_unsigned(char **pf, va_list ap, pf_token *ftoken);
 
 /*  ------------------------ PRINT_CHARS ------------------------ */
-void print_chars(const char **pf, va_list ap);
+void print_chars(char **pf, va_list ap);
 void pf_char(va_list ap);
 
 /*  ------------------------ PRINT_BONUSES ------------------------ */

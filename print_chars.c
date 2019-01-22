@@ -22,8 +22,8 @@
 #include "ft_printf.h"
 
 void pf_char(va_list ap)
-{
-	printf("---- ENTERING pf_chars ----\n");
+{   
+	// printf("---- ENTERING pf_chars ----\n");
 	char ch;
 
 	ch = va_arg(ap, int);
@@ -35,17 +35,17 @@ void pf_char(va_list ap)
 
 void pf_str(va_list ap)
 {
-	printf("---- ENTERING pf_str ----\n");
+	// printf("---- ENTERING pf_str ----\n");
 	char *str;
 
 	str = va_arg(ap, char*);
 	if (!str)
 		write(1, "(null)\n", 7);
-	else
+	else	
 		write(1, str, ft_strlen(str));
 }
 
-void print_chars(const char **pf, va_list ap)
+void print_chars(char **pf, va_list ap)
 {
 	if (*(*pf) == 'c')
 		pf_char(ap);

@@ -42,7 +42,7 @@ void pf_base16(va_list ap, pf_token *ftoken, type_token *type)
 
 	num = find_ulength_size(ap, ftoken);
 	i = sizeof(int) * 4;
-	int_str = ft_strnew(i + 1);	/* create block of memory */
+	int_str = ft_strnew(i);	/* create block of memory */
 	int_str[i] = '\0';	
 	while (--i > 0) /* will take 15 characters 16th is '\0' */
 	{
@@ -78,7 +78,7 @@ void pf_base10(va_list ap, pf_token *ftoken)
 
 	num = find_ulength_size(ap, ftoken);
 	i = sizeof(int) * 4;
-	int_str = ft_strnew(i + 1);	/* create block of memory */
+	int_str = ft_strnew(i);	/* create block of memory */
 	int_str[i] = '\0';	
 	while (--i > 0) /* will take 15 characters 16th is '\0' */
 	{
@@ -103,7 +103,7 @@ void pf_base8(va_list ap, pf_token *ftoken)
 
 	num = find_ulength_size(ap, ftoken);
 	i = sizeof(int) * 4;
-	int_str = ft_strnew(i + 1);	/* create block of memory */
+	int_str = ft_strnew(i);	/* create block of memory */
 	int_str[i] = '\0';
 	while (--i > 0) /* will take 15 characters 16th is '\0' */
 	{
@@ -122,7 +122,7 @@ void pf_base8(va_list ap, pf_token *ftoken)
 }
 
 
-void pf_unsigned(const char **pf, va_list ap, pf_token *ftoken)
+void pf_unsigned(char **pf, va_list ap, pf_token *ftoken)
 {
 	type_token type;
 
