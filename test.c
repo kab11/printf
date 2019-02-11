@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kblack <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/11 09:14:19 by kblack            #+#    #+#             */
-/*   Updated: 2018/08/27 18:57:43 by kblack           ###   ########.fr       */
+/*   Created: 2019/02/01 22:16:33 by kblack            #+#    #+#             */
+/*   Updated: 2019/02/01 22:22:47 by kblack           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
+#include <stdio.h>
+# define FLAGS " .#-+0123456789lLh"
 
-size_t		ft_strlen(const char *str)
+int main(void)
 {
-	size_t	i;
+	char *str;
+	int i = 0;
 
-	i = 0;
-	while (str[i])
+	str = "123++-asdknlk#+- ";
+	while (strchr(FLAGS, str[i]))
+	{
+		printf("flag[%d]: %c", i, str[i]);
 		i++;
-	return (i);
+	}
+	return(0);
 }

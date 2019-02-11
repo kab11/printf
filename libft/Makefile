@@ -15,12 +15,16 @@ NAME	=	libft.a
 SRC		=	ft_abs.c \
 				ft_atoi.c \
 				ft_bzero.c \
+				ft_dtoa.c \
+				ft_ftoa.c \
 				ft_isalnum.c \
 				ft_isalpha.c \
 				ft_isascii.c \
 				ft_isdigit.c \
 				ft_isprint.c \
 				ft_itoa.c \
+				ft_labs.c \
+				ft_ltoa.c \
 				ft_memalloc.c \
 				ft_memccpy.c \
 				ft_memchr.c \
@@ -90,3 +94,4 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 re: fclean all
+	

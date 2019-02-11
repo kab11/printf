@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_ltoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kblack <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/23 14:09:11 by kblack            #+#    #+#             */
-/*   Updated: 2018/08/27 18:57:19 by kblack           ###   ########.fr       */
+/*   Created: 2019/01/28 20:34:37 by kblack            #+#    #+#             */
+/*   Updated: 2019/01/28 20:35:03 by kblack           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_ltoa(intmax_t num)
 {
-	char	*joined;
-	size_t	i;
-	size_t	j;
+	intmax_t tmp;
+	int i;
+	char *str;
 
-	i = 0;
-	j = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	joined = ft_memalloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!joined)
-		return (NULL);
-	while (s1[i] != '\0')
+	tmp = ft_abs(num);
+	i = 1;
+	num < 0 ? i++ : 0;
+	while (tmp > 9)
 	{
-		joined[i] = s1[i];
+		tmp /= 10;
 		i++;
 	}
-	while (s2[j] != '\0')
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	str[i] = '\0';
+	i--;
+	while (i >= 0)
 	{
-		joined[i] = s2[j];
-		i++;
-		j++;
+		str[i] = ft_abs(num) % 10 + '0';
+		num /= 10;
+		i--;
 	}
-	joined[i] = '\0';
-	return (joined);
+	return (str);
 }
-/* free s1 in this function in order to save some emf lines :) */

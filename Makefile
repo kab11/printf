@@ -10,16 +10,21 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	ft_printf
+NAME	=	libftprintf.a
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
 
-SRC		=	ft_printf.c \
-			parse.c \
-			print_chars.c \
-			print_signed_int.c \
-			print_unsigned_int.c 
+SRC		=	char_handler.c \
+			ft_printf.c \
+			handle_precision.c \
+			print_conversion.c \
+			print_digits.c \
+			print_float.c \
+			print_hex_digits.c \
+			signed_int_handler.c \
+			unsigned_int_handler.c 
+
 
 INC_FT	=	-I libft
 LINK_FT	=	-L libft -l ft
@@ -32,18 +37,26 @@ all: $(NAME)
 
 $(NAME): $(OFL)
 	make -C libft
-	$(CC) -o $@ $(CFLAGS) $(FT) $(OFL) -I .
+	# $(CC) -o $@ $(CFLAGS) $(FT) $(OFL) -I .
+	cp libft/libft.a ./$(NAME)
+	ar rc $(NAME) $(OFL)
+	ranlib $(NAME)
 
 $(OFL): $(SRC)
 	@$(CC) $(CFLAGS) $(INC_FT) -I . -c $(SRC)
 
 clean:
 	rm -rf $(OFL)
-	make -C libft clean
+	# make -C libft clean
+	make clean -C libft
 
 fclean: clean
 	rm -rf $(NAME)
-	make -C libft fclean
+	# make -C libft fclean
+	make fclean -C libft
 
 re: fclean all
 	make -C libft re
+
+# test:
+	# gcc -Wall -Werror -Wextra main.c -I . -I libft libftprintf.a

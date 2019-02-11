@@ -21,12 +21,16 @@
 int 				ft_abs(int i);
 int					ft_atoi(const char *str);
 void				ft_bzero(void *str, size_t n);
+char				*ft_dtoa(intmax_t num);
+char				*ft_ftoa(long double num);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
 char				*ft_itoa(int n);
+long				ft_labs(long i);
+char				*ft_ltoa(intmax_t num);
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *cpy, const void *src, int c, size_t len);
 void				*ft_memchr(const void *str, int c, size_t n);
