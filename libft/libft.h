@@ -6,7 +6,7 @@
 /*   By: kblack <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 13:54:12 by kblack            #+#    #+#             */
-/*   Updated: 2018/08/28 15:29:30 by kblack           ###   ########.fr       */
+/*   Updated: 2019/03/07 17:21:09 by kblack           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include <stdio.h>
 # include <unistd.h>
 
-int 				ft_abs(int i);
+# define ABS(x) (x > 0 ? x : -x)
+
+int					ft_abs(int i);
 int					ft_atoi(const char *str);
 void				ft_bzero(void *str, size_t n);
 char				*ft_dtoa(intmax_t num);

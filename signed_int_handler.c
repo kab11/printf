@@ -6,15 +6,15 @@
 /*   By: kblack <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 15:32:43 by kblack            #+#    #+#             */
-/*   Updated: 2019/01/24 15:33:06 by kblack           ###   ########.fr       */
+/*   Updated: 2019/03/07 17:18:22 by kblack           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-intmax_t find_int_size(va_list ap, pf_token *pf)
+intmax_t	find_int_size(va_list ap, t_pf_token *pf)
 {
-	intmax_t length;
+	intmax_t	length;
 
 	if (pf->u.ll)
 		length = (intmax_t)va_arg(ap, long long);
@@ -29,19 +29,18 @@ intmax_t find_int_size(va_list ap, pf_token *pf)
 	return (length);
 }
 
-void print_int(va_list ap, pf_token *pf)
+void	print_int(va_list ap, t_pf_token *pf)
 {
-	intmax_t num;
-
-	int sign;
-	char *int_str;
+	intmax_t	num;
+	int			sign;
+	char		*int_str;
 
 	num = find_int_size(ap, pf);
 	pf->s.num = num;
 	if (num == LONG_MIN || num == LLONG_MIN)
 		int_str = ft_strdup("-9223372036854775808");
 	else if (num == LONG_MAX || num == LLONG_MAX)
-		int_str = ft_strdup("9223372036854775807");	
+		int_str = ft_strdup("9223372036854775807");
 	else if (num == 32768)
 		int_str = ft_strdup("-32768");
 	else
@@ -55,11 +54,11 @@ void print_int(va_list ap, pf_token *pf)
 	free(int_str);
 }
 
-void signed_int_handler(const char *fmt, va_list ap, pf_token *pf)
+void			signed_int_handler(const char *fmt, va_list ap, t_pf_token *pf)
 {
 	ft_bzero(&pf->s, sizeof(pf->s));
-	if (fmt[pf->i] == 'd' || fmt[pf->i] == 'i') /* signed decimal integer */
+	if (fmt[pf->i] == 'd' || fmt[pf->i] == 'i')
 		print_int(ap, pf);
-	else if (fmt[pf->i] == 'f')     /* Decimal floating point, lowercase */
+	else if (fmt[pf->i] == 'f')
 		print_float(ap, pf);
 }

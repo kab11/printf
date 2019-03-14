@@ -6,24 +6,22 @@
 /*   By: kblack <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 20:11:15 by kblack            #+#    #+#             */
-/*   Updated: 2019/01/24 20:11:29 by kblack           ###   ########.fr       */
+/*   Updated: 2019/03/07 16:57:46 by kblack           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/* HANDLE PRECISION */
-void handle_precision(pf_token *pf, char **int_str)
+void		handle_precision(t_pf_token *pf, char **int_str)
 {
-	// printf("prec: %d\t int_str[0]: %s\t dot: %d\n", pf->flag.prec, int_str[0], pf->flag.dot);
-	int len;
-	int i;
-	char *temp;
-	char *new;
+	int		len;
+	int		i;
+	char	*temp;
+	char	*new;
 
 	len = (int)ft_strlen(*int_str);
 	if (pf->flag.prec == 0 && *int_str[0] == '0')
-		*int_str[0] = '\0';
+		;
 	else if (pf->flag.prec > len)
 	{
 		if (pf->ctype == 'o' && pf->flag.hash == 1)

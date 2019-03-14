@@ -6,15 +6,15 @@
 /*   By: kblack <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 17:30:06 by kblack            #+#    #+#             */
-/*   Updated: 2019/01/23 17:30:23 by kblack           ###   ########.fr       */
+/*   Updated: 2019/03/07 15:53:24 by kblack           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-uintmax_t find_ulen_size(va_list ap, pf_token *pf)
+uintmax_t	find_ulen_size(va_list ap, t_pf_token *pf)
 {
-	uintmax_t length;
+	uintmax_t	length;
 
 	if (pf->u.ll || pf->ctype == 'p')
 		length = (uintmax_t)va_arg(ap, unsigned long long);
@@ -29,19 +29,19 @@ uintmax_t find_ulen_size(va_list ap, pf_token *pf)
 	return (length);
 }
 
-void pf_base8(va_list ap, pf_token *pf)
+void	pf_base8(va_list ap, t_pf_token *pf)
 {
-	uintmax_t num;
-	uintmax_t tmp;
-	char *int_str;
-	int i;
+	uintmax_t	num;
+	uintmax_t	tmp;
+	char		*int_str;
+	int			i;
 
 	num = find_ulen_size(ap, pf);
 	tmp = num;
 	i = 1;
-	while (tmp > 9)
+	while (tmp > 8)
 	{
-		tmp /= 10;
+		tmp /= 8;
 		i++;
 	}
 	int_str = (char *)malloc(sizeof(char) * (i + 1));
@@ -58,12 +58,12 @@ void pf_base8(va_list ap, pf_token *pf)
 	free(int_str);
 }
 
-void pf_base10(va_list ap, pf_token *pf)
+void	pf_base10(va_list ap, t_pf_token *pf)
 {
-	uintmax_t num;
-	uintmax_t tmp;
-	char *int_str;
-	int i;
+	uintmax_t	num;
+	uintmax_t	tmp;
+	char		*int_str;
+	int			i;
 
 	num = find_ulen_size(ap, pf);
 	tmp = num;
@@ -86,25 +86,22 @@ void pf_base10(va_list ap, pf_token *pf)
 	free(int_str);
 }
 
-void pf_base16(va_list ap, pf_token *pf)
+void	pf_base16(va_list ap, t_pf_token *pf)
 {
-	uintmax_t num;
-	uintmax_t tmp;
-	char *int_str;
-	int i;
+	uintmax_t	num;
+	uintmax_t	tmp;
+	char		*int_str;
+	int			i;
 
 	num = find_ulen_size(ap, pf);
 	tmp = num;
-	i = 0;
-	while (tmp > 0)
-	{
+	i = (num == 0 ? 1 : 0);
+	while (tmp > 0 && ++i)
 		tmp >>= 4;
-		i++;
-	}
 	int_str = (char *)malloc(sizeof(char) * (i + 1));
 	int_str[i] = '\0';
 	i--;
-	while (num > 0)
+	while (i >= 0)
 	{
 		if (pf->u.x || pf->u.p)
 			int_str[i] = HEX[num & 0xF];
@@ -118,25 +115,26 @@ void pf_base16(va_list ap, pf_token *pf)
 	free(int_str);
 }
 
-void unsigned_int_handler(const char *fmt, va_list ap, pf_token *pf)
+void	unsigned_int_handler(const char *fmt,
+	va_list ap, t_pf_token *pf)
 {
-	if (fmt[pf->i] == 'o') /* unsigned octal */
+	if (fmt[pf->i] == 'o')
 		pf_base8(ap, pf);
-	else if (fmt[pf->i] == 'u')	/* unsigned deciaml integer */
+	else if (fmt[pf->i] == 'u')
 		pf_base10(ap, pf);
-	else if (fmt[pf->i] == 'x')	 /* unsigned hexadecimal integer, lowercase */
+	else if (fmt[pf->i] == 'x')
 	{
 		pf->u.x = 1;
 		pf_base16(ap, pf);
 	}
-	else if (fmt[pf->i] == 'X')  /* unsigned hexadecimal integer, uppercase */
+	else if (fmt[pf->i] == 'X')
 	{
-		pf->u.X = 1;
+		pf->u.xx = 1;
 		pf_base16(ap, pf);
 	}
-	else if (fmt[pf->i] == 'p')	/* pointer address */
+	else if (fmt[pf->i] == 'p')
 	{
 		pf->u.p = 1;
-		pf_base16(ap, pf); 
+		pf_base16(ap, pf);
 	}
 }

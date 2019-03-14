@@ -6,7 +6,7 @@
 /*   By: kblack <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 22:13:21 by kblack            #+#    #+#             */
-/*   Updated: 2018/11/21 00:07:07 by kblack           ###   ########.fr       */
+/*   Updated: 2019/03/07 17:05:47 by kblack           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,77 +23,87 @@
 # include <float.h>
 # include <limits.h>
 
-# define FLAGS " .#+-0123456789hlL"
+# define FLAGS " .#+-0123456789hlLf"
 # define HEX "0123456789abcdef"
-# define HEX_UPPER "0123456789ABCDEF" 
-# define OCTAL "01234567" 
+# define HEX_UPPER "0123456789ABCDEF"
+# define OCTAL "01234567"
 
-/*  
- *  The colon signifies that they are bit-field; tells how many bits each variable
- *  takes up ; and use it to load in a single 32-bit value  
-*/
+# define ABS(x) (x > 0 ? x : -x)
+# define NAN(x) (x != x) ? 1 : 0
+# define INF(x) (x * 2 == x && x != 0) ? 1 : 0
 
-typedef struct pf_float_tokens
+typedef struct		s_pf_float_tokens
 {
-    int sign;
-    char *whole;
-    char *wd;
-    char *str;
-} pf_f;
+	int				sign;
+	char			*whole;
+	char			*wd;
+	char			*str;
+}					t_pf_f;
 
-typedef struct pf_signed_tokens
+typedef struct		s_pf_signed_tokens
 {
-    char sign;
-    char neg;
-    int num;
-} pf_s;
+	char			sign;
+	char			neg;
+	int				num;
+}					t_pf_s;
 
-typedef struct pf_unsign_tokens
+typedef struct		s_pf_unsign_tokens
 {
-    unsigned int x: 1;
-    unsigned int X: 1;
-    unsigned int p: 1;
-    
-    unsigned int h: 1;
-    unsigned int hh: 1;
-    unsigned int l: 1;
-    unsigned int ll: 1;
-    unsigned int L: 1; 
-} pf_u;
+	unsigned int	x: 1;
+	unsigned int	xx: 1;
+	unsigned int	p: 1;
+	unsigned int	h: 1;
+	unsigned int	hh: 1;
+	unsigned int	l: 1;
+	unsigned int	ll: 1;
+	unsigned int	ld: 1;
+}					t_pf_u;
 
-typedef struct pf_flag_tokens
+typedef struct		s_pf_flag_tokens
 {
-    unsigned int hash: 1;
-    unsigned int left: 1;
-    unsigned int plus: 1;
-    unsigned int space: 1;
-    unsigned int zero: 1;
-    unsigned int dot: 1;
-    int width;
-    int prec;
-} pf_flags;
+	unsigned int	hash: 1;
+	unsigned int	left: 1;
+	unsigned int	plus: 1;
+	unsigned int	space: 1;
+	unsigned int	zero: 1;
+	unsigned int	dot: 1;
+	int				width;
+	int				prec;
+}					t_pf_flags;
 
-
-typedef struct pf_main_tokens
+typedef struct		s_pf_main_tokens
 {
-    int i;
-    int out;
-    char ctype;
-    pf_flags flag;
-    pf_u u;
-    pf_s s;
-    pf_f f;
-} pf_token;
+	int				i;
+	int				out;
+	char			ctype;
+	t_pf_flags		flag;
+	t_pf_u			u;
+	t_pf_s			s;
+	t_pf_f			f;
+}					t_pf_token;
 
-int ft_printf(const char *fmt, ...);
+int					ft_printf(const char *fmt, ...);
 
-void ascii_handler(const char *fmt, va_list ap, pf_token *pf);
-void handle_precision(pf_token *pf, char **int_str);
-void print_conversion(const char *fmt, va_list ap, pf_token *pf);
-void print_digits(pf_token *pf, char *int_str);
-void print_float(va_list ap, pf_token *pf);
-void print_hex_digits(pf_token *pf, char *int_str);
-void signed_int_handler(const char *fmt, va_list ap, pf_token *pf);
-void unsigned_int_handler(const char *fmt, va_list ap, pf_token *pf);
+void				ascii_handler(const char *fmt, va_list ap, t_pf_token *pf);
+void				char_arg(va_list ap, t_pf_token *pf, int *ch);
+void				get_flags(const char *fmt, t_pf_token *pf);
+long				get_decimal(long double num, int prec);
+void				get_type(const char *fmt, va_list ap, t_pf_token *pf);
+char				*handle_flt_prec(int dot, char *str,
+						int len, t_pf_token *pf);
+void				handle_precision(t_pf_token *pf, char **int_str);
+void				null_str(t_pf_token *pf);
+void				print_conversion(const char *fmt,
+						va_list ap, t_pf_token *pf);
+void				print_digits(t_pf_token *pf,
+						char *int_str);
+void				print_float(va_list ap, t_pf_token *pf);
+void				print_hex_digits(t_pf_token *pf, char *int_str);
+void				print_inf(t_pf_token *pf);
+void				print_nan(t_pf_token *pf);
+void				signed_int_handler(const char *fmt,
+						va_list ap, t_pf_token *pf);
+void				unsigned_int_handler(const char *fmt,
+						va_list ap, t_pf_token *pf);
 
 #endif

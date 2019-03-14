@@ -9,465 +9,437 @@
 /*   Updated: 2019/01/29 17:57:21 by kblack           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// #include "ft_printf.h"
+// 
+#include "ft_printf.h"
 
 //gcc -Wall -Werror -Wextra main.c -I . -I libft libftprintf.a
 
+
 int main(void)
 {
-	/*----------------------% TESTS---------------------*/
-	// ft_printf("%5%\n");
-	// ft_printf("%-5%\n");
-	// ft_printf("%.0%\n");
-	// ft_printf("%   %\n", "test");
+	ft_printf("%-05d\n", -42);
+	ft_printf("%-05d\n", 42);
+	ft_printf("%-05o\n", 2500);
+	ft_printf("%-5.2s is a string\n", "this");
+	ft_printf("%-.2s is a string\n", "this");
+	ft_printf("%5.2s is a string\n", "this");
+	ft_printf("%.2s is a string\n", "this");
+	ft_printf("%#x\n", 0);
+	ft_printf("%010x\n", 542);
 
-	// printf("%5%\n");
-	// printf("%-5%\n");
-	// printf("%.0%\n");
-	// printf("%   %\n");
+	printf("\n\n");
+
+	printf("%-5d\n", -42);
+	printf("%-5d\n", 42);
+	printf("%-5o\n", 2500);
+	printf("%-5.2s is a string\n", "this");
+	printf("%-.2s is a string\n", "this");
+	printf("%5.2s is a string\n", "this");
+	printf("%.2s is a string\n", "this");
+	printf("%#x\n", 0);
+	printf("%010x\n", 542);
+
+	printf("|%-4d|\n", 42);
+	ft_printf("|%-4d|\n", 42);
+	printf("%%-5d -42 == |%-5d|\n", -42);
+	ft_printf("%%-5d -42 == |%-5d|\n", -42);
+	printf("|%3i|%-3i|\n", 42, 42);
+	ft_printf("|%3i|%-3i|\n", 42, 42);
+	printf("%%-4i 42 == |%-4i|\n", 42);
+	ft_printf("%%-4i 42 == |%-4i|\n", 42);
+	// %c tests
+	printf("%%c ft_printf tests:\n");
+	ft_printf("%c", 42);
+	ft_printf("Kashim a %c histoires à raconter", 1001);
+	ft_printf("Il fait au moins %c\n", -8000);
+	ft_printf("%c", -0);
+	ft_printf("%c", 0);
+	ft_printf("%c\n", INT_MAX);
+	ft_printf("%c\n", 'c');
+	ft_printf("%c\n", '\n');
+	ft_printf("%c", 'l');
+	ft_printf("%c", 'y');
+	ft_printf("%c", ' ');
+	ft_printf("%c", 'e');
+	ft_printf("%c", 's');
+	ft_printf("%c", 't');
+	ft_printf("%c", ' ');
+	ft_printf("%c", 'f');
+	ft_printf("%c", 'a');
+	ft_printf("%c", 'n');
+	ft_printf("%c", 't');
+	ft_printf("%c", 'a');
+	ft_printf("%c", 's');
+	ft_printf("%c", 't');
+	ft_printf("%c", 'i');
+	ft_printf("%c", 'q');
+	ft_printf("%c", 'u');
+	ft_printf("%c", 'e');
+	ft_printf("%c\n", '!');
+	ft_printf("%c\n", '\r');
+	ft_printf("%c\n", '\t');
+	printf("%%c printf tests:\n");
+	printf("%c", 42);
+	printf("Kashim a %c histoires à raconter", 1001);
+	printf("Il fait au moins %c\n", -8000);
+	printf("%c", -0);
+	printf("%c", 0);
+	printf("%c\n", INT_MAX);
+	printf("%c\n", 'c');
+	printf("%c\n", '\n');
+	printf("%c", 'l');
+	printf("%c", 'y');
+	printf("%c", ' ');
+	printf("%c", 'e');
+	printf("%c", 's');
+	printf("%c", 't');
+	printf("%c", ' ');
+	printf("%c", 'f');
+	printf("%c", 'a');
+	printf("%c", 'n');
+	printf("%c", 't');
+	printf("%c", 'a');
+	printf("%c", 's');
+	printf("%c", 't');
+	printf("%c", 'i');
+	printf("%c", 'q');
+	printf("%c", 'u');
+	printf("%c", 'e');
+	printf("%c\n", '!');
+	printf("%c\n", '\r');
+	printf("%c\n", '\t');
+
+	// %d tests
+	printf("\nft_printf %%d tests\n");
+	ft_printf("%d", 42);
+	ft_printf("Kashim a %d histoires à raconter", 1001);
+	ft_printf("Il fait au moins %d\n", -8000);
+	ft_printf("%d", -0);
+	ft_printf("%d", 0);
+	ft_printf("%d", INT_MAX);
+	ft_printf("%d", INT_MIN);
+	ft_printf("%d", INT_MIN - 1);
+	ft_printf("%d", INT_MAX + 1);
+	ft_printf("%%d 0000042 == |%d|\n", 0000042);
+	ft_printf("%%d \t == |%d|\n", '\t');
+	ft_printf("%%d Lydie == |%d|\n", 'L'+'y'+'d'+'i'+'e');
+	printf("\nprintf %%d tests\n");
+	printf("%d", 42);
+	printf("Kashim a %d histoires à raconter", 1001);
+	printf("Il fait au moins %d\n", -8000);
+	printf("%d", -0);
+	printf("%d", 0);
+	printf("%d", INT_MAX);
+	printf("%d", INT_MIN);
+	printf("%d", INT_MIN - 1);
+	printf("%d", INT_MAX + 1);
+	printf("%%d 0000042 == |%d|\n", 0000042);
+	printf("%%d \t == |%d|\n", '\t');
+	printf("%%d Lydie == |%d|\n", 'L'+'y'+'d'+'i'+'e');
+	
+// char tests
+	char		*str = NULL;
+	printf("\n%%s tests ft_printf\n");
+	ft_printf("%s", "pouet");
+	ft_printf(" pouet %s !!\n", "camembert");
+	ft_printf("%s !\n", "Ceci n'est pas un \0 exercice !");
+	ft_printf("%s!\n", "Ceci n'est toujours pas un exercice !");
+	ft_printf("%s!\n", str);
+	ft_printf("%s", "Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Etalafinilla*bip*");
+
+	printf("\n%%s tests printf\n");
+	printf("%s", "pouet");
+	printf(" pouet %s !!\n", "camembert");
+	printf("%s !\n", "Ceci n'est pas un \0 exercice !");
+	printf("%s!\n", "Ceci n'est toujours pas un exercice !");
+	printf("%s!\n", str);
+	printf("%s", "Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une\"atelierderéflexion\"entreOliviaetRichardCrossquicommençaitàêtrepasmalconnudanslemilieuencemomentàcausedequelquesémissionsdeteréalité.J'aibienrigoleavecOliviaRuizcesoirlà,jeluiparlaitdemonrêved'écritetunechansondepirate,elledelafaçonqu'elleavaitd'écriredeschansons\"commeellessortaient\"etdes'étonnerparfoisqued'autrestrouventcabien.Brefçac'étaitunechouettesoirée/nuitquis'estterminéeauxalentoursde7hdumatinenprenantuncaféauChaidel'AbbayeprèsdeMabillon.Avantqu'ellenedisparaissepourtoujoursdemonexistence.JesuissouventrepasséauChaitôtlematinenespérantlarevoirmaisniet.Rien.JusteChristineScottThomasaperçuunjeudimatinoùilfaisaitchaud.Etalafinilla*bip*");
+
+// %u tests
+	printf("\n%%u tests ft_printf\n");
+	ft_printf("%u", 42);
+	ft_printf("Kashim a %u histoires à raconter", 1001);
+	ft_printf("Il fait au moins %u\n", -8000);
+	ft_printf("%u", -0);
+	ft_printf("%u", 0);
+	ft_printf("%u", INT_MAX);
+	ft_printf("%u", INT_MIN);
+	ft_printf("%u", INT_MIN - 1);
+	ft_printf("%u", INT_MAX + 1);
+	ft_printf("%%u 0000042 == |%u|\n", 0000042);
+	ft_printf("%%u \t == |%u|\n", '\t');
+	ft_printf("%%u Lydie == |%u|\n", 'L'+'y'+'d'+'i'+'e');
+	printf("\n%%u tests printf\n");
+	printf("%u", 42);
+	printf("Kashim a %u histoires à raconter", 1001);
+	printf("Il fait au moins %u\n", -8000);
+	printf("%u", -0);
+	printf("%u", 0);
+	printf("%u", INT_MAX);
+	printf("%u", INT_MIN);
+	printf("%u", INT_MIN - 1);
+	printf("%u", INT_MAX + 1);
+	printf("%%u 0000042 == |%u|\n", 0000042);
+	printf("%%u \t == |%u|\n", '\t');
+	printf("%%u Lydie == |%u|\n", 'L'+'y'+'d'+'i'+'e');
+
+// %o tests
+	printf("\n%%o tests ft_printf\n");
+	ft_printf("%o", 42);
+	ft_printf("Kashim a %o histoires à raconter", 1001);
+	ft_printf("Il fait au moins %o\n", -8000);
+	ft_printf("%o", -0);
+	ft_printf("%o", 0);
+	ft_printf("%o", INT_MAX);
+	ft_printf("%o", INT_MIN);
+	ft_printf("%o", INT_MIN - 1);
+	ft_printf("%o", INT_MAX + 1);
+	ft_printf("%%o 0000042 == |%o|\n", 0000042);
+	ft_printf("%%o \t == |%o|\n", '\t');
+	ft_printf("%%o Lydie == |%o|\n", 'L'+'y'+'d'+'i'+'e');
+	printf("\n%%o tests printf\n");
+	printf("%o", 42);
+	printf("Kashim a %o histoires à raconter", 1001);
+	printf("Il fait au moins %o\n", -8000);
+	printf("%o", -0);
+	printf("%o", 0);
+	printf("%o", INT_MAX);
+	printf("%o", INT_MIN);
+	printf("%o", INT_MIN - 1);
+	printf("%o", INT_MAX + 1);
+	printf("%%o 0000042 == |%o|\n", 0000042);
+	printf("%%o \t == |%o|\n", '\t');
+	printf("%%o Lydie == |%o|\n", 'L'+'y'+'d'+'i'+'e');
+	
+	//%x tests
+	printf("\n%%x tests ft_printf\n");
+	ft_printf("%x", 42);
+	ft_printf("Kashim a %x histoires à raconter", 1001);
+	ft_printf("Il fait au moins %x\n", -8000);
+	ft_printf("%x", -0);
+	ft_printf("%x", 0);
+	ft_printf("%x", INT_MAX);
+	ft_printf("%x", INT_MIN);
+	ft_printf("%x", INT_MIN - 1);
+	ft_printf("%x", INT_MAX + 1);
+	ft_printf("%%x 0000042 == |%x|\n", 0000042);
+	ft_printf("%%x \t == |%x|\n", '\t');
+	ft_printf("%%x Lydie == |%x|\n", 'L'+'y'+'d'+'i'+'e');
+	printf("\n%%x tests printf\n");
+	printf("%x", 42);
+	printf("Kashim a %x histoires à raconter", 1001);
+	printf("Il fait au moins %x\n", -8000);
+	printf("%x", -0);
+	printf("%x", 0);
+	printf("%x", INT_MAX);
+	printf("%x", INT_MIN);
+	printf("%x", INT_MIN - 1);
+	printf("%x", INT_MAX + 1);
+	printf("%%x 0000042 == |%x|\n", 0000042);
+	printf("%%x \t == |%x|\n", '\t');
+	printf("%%x Lydie == |%x|\n", 'L'+'y'+'d'+'i'+'e');
+
+	// plus test
+	printf("\nPlus test ft_printf\n");
+	ft_printf("%%+i 42 == %+i\n", 42);
+	ft_printf("%%+d 42 == %+d\n", INT_MAX);
+	ft_printf("%%+i -42 == %+i\n", -42);
+	ft_printf("%0+04d\n", 42);
+	printf("\nPlus test printf\n");
+	printf("%%+i 42 == %+i\n", 42);
+	printf("%%+d 42 == %+d\n", INT_MAX);
+	printf("%%+i -42 == %+i\n", -42);
+	printf("%0+04d\n", 42);
+
+	//zero tests
+	printf("\nzero tests\n");
+	ft_printf("%%04i 42 == |%04i|\n", 42);
+	ft_printf("%%05i 42 == |%05i|\n", 42);
+	ft_printf("%%0i 42 == |%0i|\n", 42);
+	ft_printf("%%0d 0000042 == |%0d|\n", 0000042);
+	printf("\nzero tests\n");
+	printf("%%04i 42 == |%04i|\n", 42);
+	printf("%%05i 42 == |%05i|\n", 42);
+	printf("%%0i 42 == |%0i|\n", 42);
+	printf("%%0d 0000042 == |%0d|\n", 0000042);
+
+	//space
+	printf("\nspace test\n");
+	ft_printf("%%      i 42 == |%      i|\n", 42);
+	ft_printf("%% i -42 == |% i|\n", -42);
+	ft_printf("|% 4i|\n", 42);
+	printf("\nspace test\n");
+	printf("%%      i 42 == |%      i|\n", 42);
+	printf("%% i -42 == |% i|\n", -42);
+	printf("|% 4i|\n", 42);
+
+	//alt mode
+	printf("\nalt mode test\n");
+	ft_printf("%%#X 42 ==  %#X\n", 42);
+	ft_printf("%%X 42 ==  %X\n", 42);
+	ft_printf("%%#o 0 ==  %#o\n", 0);
+	ft_printf("%%o 0 ==  %o\n", 0);
+	ft_printf("%%#o INT_MAX ==  %#o\n", INT_MAX);
+	ft_printf("%%o INT_MAX ==  %o\n", INT_MAX);
+	ft_printf("%%#o INT_MIN ==  %#o\n", INT_MIN);
+	ft_printf("%%o INT_MIN ==  %o\n", INT_MIN);
+	ft_printf("%%#X INT_MIN ==  %#X\n", INT_MIN);
+	ft_printf("%%X INT_MIN ==  %X\n", INT_MIN);
+	ft_printf("%%#X INT_MAX ==  %#X\n", INT_MAX);
+	ft_printf("%%X INT_MAX ==  %X\n", INT_MAX);
+	printf("\nalt mode test\n");
+	printf("%%#X 42 ==  %#X\n", 42);
+	printf("%%X 42 ==  %X\n", 42);
+	printf("%%#o 0 ==  %#o\n", 0);
+	printf("%%o 0 ==  %o\n", 0);
+	printf("%%#o INT_MAX ==  %#o\n", INT_MAX);
+	printf("%%o INT_MAX ==  %o\n", INT_MAX);
+	printf("%%#o INT_MIN ==  %#o\n", INT_MIN);
+	printf("%%o INT_MIN ==  %o\n", INT_MIN);
+	printf("%%#X INT_MIN ==  %#X\n", INT_MIN);
+	printf("%%X INT_MIN ==  %X\n", INT_MIN);
+	printf("%%#X INT_MAX ==  %#X\n", INT_MAX);
+	printf("%%X INT_MAX ==  %X\n", INT_MAX);
+
+	// precision tests
+	ft_printf("\nprecision tests ft_printf\n");
+	ft_printf("ft%%04.5i 42 == |%04.5i|\n", 42);
+	ft_printf("ft%%04.3i 42 == |%04.3i|\n", 42);
+	ft_printf("ft%%04.2i 42 == |%04.2i|\n", 42);
+	printf("\nprecision tests printf\n");
+	printf("ft%%04.5i 42 == |%04.5i|\n", 42);
+	printf("ft%%04.3i 42 == |%04.3i|\n", 42);
+	printf("ft%%04.2i 42 == |%04.2i|\n", 42);
+
+	// //double tests
+	printf("double tests ft_printf\n");
+	ft_printf("%f", (double)42);
+	ft_printf("Kashim a %f histoires à raconter", (double)1001);
+	ft_printf("Il fait au moins %f\n", (double)-8000);
+	ft_printf("%f", (double)-0);
+	ft_printf("%f", (double)0);
+	ft_printf("%f", (double)INT_MAX);
+	ft_printf("%f", (double)INT_MIN);
+	ft_printf("%f", (double)INT_MIN - 1);
+	ft_printf("%f", (double)INT_MAX + 1);
+	ft_printf("%%f 0000042 == |%f|\n", (double)0000042);
+	ft_printf("%%f \t == |%f|\n", (double)'\t');
+	ft_printf("%%f Lydie == |%f|\n", (double)'L'+'y'+'d'+'i'+'e');
+	ft_printf("%%f 42.42 == |%f|\n", 42.42);
+	printf("double tests printf\n");
+	printf("\n\n");
+	printf("%f", (double)42);
+	printf("Kashim a %f histoires à raconter", (double)1001);
+	printf("Il fait au moins %f\n", (double)-8000);
+	printf("%f", (double)-0);
+	printf("%f", (double)0);
+	printf("%f", (double)INT_MAX);
+	printf("%f", (double)INT_MIN);
+	printf("%f", (double)INT_MIN - 1);
+	printf("%f", (double)INT_MAX + 1);
+	printf("%%f 0000042 == |%f|\n", (double)0000042);
+	printf("%%f \t == |%f|\n", (double)'\t');
+	printf("%%f Lydie == |%f|\n", (double)'L'+'y'+'d'+'i'+'e');
+	printf("%%f 42.42 == |%f|\n", 42.42);
+
+	//PASSSED
+
+	unsigned char a = -125;
+	unsigned int b = -125;
+	unsigned long c = -125;
+	unsigned short d = -125;
+	// size_t e = -125;
+	// uintmax_t f = -125;
+	unsigned long long	g = -125;
+
+	unsigned char h = 0;
+	unsigned int i = 0;
+	unsigned long j = 0;
+	unsigned short k = 0;
+	// size_t l = 0;
+	uintmax_t m = 0;
+	unsigned long long n = 0;
+
+	unsigned char o = (unsigned char)~0U>>1;
+	unsigned int p = ~0U>>1;
+	unsigned long q = ~0U>>1;
+	unsigned short r = (short)~0U>>1;
+	// size_t s = (size_t)~0U>>1;
+	// uintmax_t t = (uintmax_t)~0U>>1;
+	unsigned long long u = (unsigned long long)~0U>>1;
+
+	unsigned char v = -m-1;
+	unsigned int w = -n-1;
+	unsigned long x = -o-1;
+	unsigned short y = -p-1;
+	// unsigned long z = -q-1;
+	// uintmax_t zz = -r-1;
+	unsigned long long aa = -r-1;
+
+	printf("\nllstuf\n");
+	ft_printf("unsigned char		a = %hhu sizeof a = %lu\n", a,sizeof(a));
+	ft_printf("unsigned int		b = %u sizeof b = %lu\n",b,sizeof(b));
+	ft_printf("unsigned long		c = %lu sizeof c = %lu\n",c,sizeof(c));
+	ft_printf("unsigned short		d = %hu sizeof d = %lu\n",d,sizeof(d));
+	// ft_printf("size_t			e = %zu sizeof e = %lu\n",e,sizeof(e));
+	// ft_printf("uintmax_t		f = %ju sizeof f = %lu\n",f,sizeof(f));
+	ft_printf("unsigned long long	g = %llu sizeof g = %lu\n\n",g,sizeof(g));
+
+	ft_printf("unsigned char		h = %hhu sizeof h = %lu\n", h,sizeof(h));
+	ft_printf("unsigned int		i = %u sizeof i = %lu\n",i,sizeof(i));
+	ft_printf("unsigned long		j = %lu sizeof j = %lu\n",j,sizeof(j));
+	ft_printf("unsigned short		k = %hu sizeof k = %lu\n",k,sizeof(k));
+	// ft_printf("size_t			l = %zu sizeof l = %lu\n",l,sizeof(l));
+	// ft_printf("uintmax_t		m = %ju sizeof m = %lu\n",m,sizeof(m));
+	ft_printf("unsigned long long	n = %llu sizeof n = %lu\n\n",n,sizeof(n));
+
+	ft_printf("unsigned char		o = %hhu sizeof o = %lu\n", o,sizeof(o));
+	ft_printf("unsigned int		p = %u sizeof p = %lu\n",p,sizeof(p));
+	ft_printf("unsigned long		q = %lu sizeof q = %lu\n",q,sizeof(q));
+	ft_printf("unsigned short		r = %hu sizeof r = %lu\n",r,sizeof(r));
+	// ft_printf("size_t			s = %zu sizeof s = %lu\n",s,sizeof(s));
+	// ft_printf("uintmax_t		t = %ju sizeof t = %lu\n",t,sizeof(t));
+	ft_printf("unsigned long long	u = %llu sizeof u = %lu\n\n",u,sizeof(u));
+
+	ft_printf("unsigned char		v = %hhu sizeof v = %lu\n", v,sizeof(v));
+	ft_printf("unsigned int		w = %u sizeof w = %lu\n",w,sizeof(w));
+	ft_printf("unsigned long		x = %lu sizeof x = %lu\n",x,sizeof(x));
+	ft_printf("unsigned short		y = %hu sizeof y = %lu\n",y,sizeof(y));
+	// ft_printf("size_t			z = %zu sizeof z = %lu\n",z,sizeof(z));
+	// ft_printf("uintmax_t		zz = %ju sizeof zz = %lu\n",zz,sizeof(zz));
+	ft_printf("unsigned long long	aa = %llu sizeof aa = %lu\n\n",aa,sizeof(aa));
 
 
-	/*----------------------CHAR AND STRING TESTS---------------------*/
-	// char *str = "this is a string";
-	// char c = 'a';
-	// char d = 'w';
+	printf("\nllstuf\n");
+	printf("unsigned char		a = %hhu sizeof a = %lu\n", a,sizeof(a));
+	printf("unsigned int		b = %u sizeof b = %lu\n",b,sizeof(b));
+	printf("unsigned long		c = %lu sizeof c = %lu\n",c,sizeof(c));
+	printf("unsigned short		d = %hu sizeof d = %lu\n",d,sizeof(d));
+	// printf("size_t			e = %zu sizeof e = %lu\n",e,sizeof(e));
+	// printf("uintmax_t		f = %ju sizeof f = %lu\n",f,sizeof(f));
+	printf("unsigned long long	g = %llu sizeof g = %lu\n\n",g,sizeof(g));
 
-	// printf("printf: %c%c\there<======\n", c, 65);
-	// ft_printf("printf: %c%c\there<======\n", c, 65);
+	printf("unsigned char		h = %hhu sizeof h = %lu\n", h,sizeof(h));
+	printf("unsigned int		i = %u sizeof i = %lu\n",i,sizeof(i));
+	printf("unsigned long		j = %lu sizeof j = %lu\n",j,sizeof(j));
+	printf("unsigned short		k = %hu sizeof k = %lu\n",k,sizeof(k));
+	// printf("size_t			l = %zu sizeof l = %lu\n",l,sizeof(l));
+	// printf("uintmax_t		m = %ju sizeof m = %lu\n",m,sizeof(m));
+	printf("unsigned long long	n = %llu sizeof n = %lu\n\n",n,sizeof(n));
 
-	// printf("----------------------\n");
-	// printf("----------------------\n");
+	printf("unsigned char		o = %hhu sizeof o = %lu\n", o,sizeof(o));
+	printf("unsigned int		p = %u sizeof p = %lu\n",p,sizeof(p));
+	printf("unsigned long		q = %lu sizeof q = %lu\n",q,sizeof(q));
+	printf("unsigned short		r = %hu sizeof r = %lu\n",r,sizeof(r));
+	// printf("size_t			s = %zu sizeof s = %lu\n",s,sizeof(s));
+	// printf("uintmax_t		t = %ju sizeof t = %lu\n",t,sizeof(t));
+	printf("unsigned long long	u = %llu sizeof u = %lu\n\n",u,sizeof(u));
 
-	// ft_printf("char: ->%-6c<-->%6c\n", c, d);
-	// ft_printf("char: ->%6c<-->%-6c\n", c, d);
-
-	// printf("----------------------\n");
-	// printf("----------------------\n");
-
-	// printf("char: ->%-6c<-->%6c\n", c, d);
-	// printf("char: ->%6c<-->%-6c\n", c, d);
-
-	// printf("----------------------\n");
-	// printf("----------------------\n");
-	// printf("----------------------\n");
-	// printf("----------------------\n");
-
-	// ft_printf("string: %s\n", str);
-	// ft_printf("string: %5s\n", str);
-	// ft_printf("string: %.2s\n", str);
-	// ft_printf("string: %-5s\n", str);
-	// ft_printf("string: %-.2s\n", str);
-	// ft_printf("string: %5.2s\n", str);
-	// ft_printf("string: %-5.2s\n", str);
-
-	// printf("----------------------\n");
-	// printf("----------------------\n");
-	// printf("----------------------\n");
-	// printf("----------------------\n");
-
-	// printf("string: %s\n", str);
-	// printf("string: %5s\n", str);
-	// printf("string: %.2s\n", str);
-	// printf("string: %-5s\n", str);
-	// printf("string: %-.2s\n", str);
-	// printf("string: %5.2s\n", str);
-	// printf("string: %-5.2s\n", str);
-
-	// ft_printf(":%s:\n", "Hello, world!");
-	// ft_printf(":%15s:\n", "Hello, world!");
-	// ft_printf(":%.10s:\n", "Hello, world!");
-	// ft_printf(":%-10s:\n", "Hello, world!");
-	// ft_printf(":%-15s:\n", "Hello, world!");
-	// ft_printf(":%.15s:\n", "Hello, world!");
-	// ft_printf(":%15.10s:\n", "Hello, world!");
-	// ft_printf(":%-15.10s:\n", "Hello, world!");
-	// ft_printf("@moulitest: %s\n", NULL);
-	// ft_printf("%s %s\n", NULL, string);
-
-	// printf("----------------------\n");
-	// printf("----------------------\n");
-	// printf("----------------------\n");
-	// printf("----------------------\n");
-
-	// printf(":%s:\n", "Hello, world!");
-	// printf(":%15s:\n", "Hello, world!");
-	// printf(":%.10s:\n", "Hello, world!");
-	// printf(":%-10s:\n", "Hello, world!");
-	// printf(":%-15s:\n", "Hello, world!");
-	// printf(":%.15s:\n", "Hello, world!");
-	// printf(":%15.10s:\n", "Hello, world!");
-	// printf(":%-15.10s:\n", "Hello, world!");
-	// printf("@moulitest: %s\n", NULL);
-	// printf("%s %s\n", NULL, string);
-
-	/*-----------------------UNSIGNED INTEGERS---------------------------*/
-	/* Unsigned ints */
-	// ft_printf("Unsigned value: %u\n", 150);
-	// ft_printf("Unsigned value: %u\n", '\0');
-	// ft_printf("Unsigned Integer (ft_printf): %15.0u\n", 123);
-	// ft_printf("Unsigned Integer (ft_printf): %-15.0u\n", 123);
-	// ft_printf("Unsigned Integer (ft_printf): %015.5u\n", 123);
-	// ft_printf("Unsigned Integer (ft_printf): %15.u\n", 123);
-
-	// printf("---------------------------------\n");
-
-	// printf("Unsigned value: %u\n", 150);
-	// printf("Unsigned value: %u\n", '\0');
-	// printf("Unsigned Integer (ft_printf): %15.0u\n", 123);
-	// printf("Unsigned Integer (ft_printf): %-15.0u\n", 123);
-	// printf("Unsigned Integer (ft_printf): %015.5u\n", 123);
-	// printf("Unsigned Integer (ft_printf): %15.u\n", 123);
-
-	// printf("---------------------------------\n");
-	// printf("---------------------------------\n");
-
-	// /* Unsigned Hexidecimal */
-	// ft_printf("Hexadecimal: %#x\n", 0);
-	// ft_printf("Hexadecimal: %#8x\n", 42);
-	// ft_printf("UnsignHexInt, lowercase (ft_printf): %#x\n", -2545);
-	// ft_printf("UnsignHexInt, lowercase (ft_printf): %#025x\n", 2545);
-	// ft_printf("UnsignHexInt, UPPERCASE (ft_printf): %#X\n", -2545);
-	// ft_printf("UnsignHexInt, UPPERCASE (ft_printf): %#025X\n", 2545);
-	// ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
-	// ft_printf("%#8x\n", 42);
-
-	// printf("---------------------------------\n");
-
-	// printf("Hexadecimal: %#x\n", 0);
-	// printf("Hexadecimal: %#8x\n", 42);
-	// printf("UnsignHexInt, lowercase (ft_printf): %#x\n", -2545);
-	// printf("UnsignHexInt, lowercase (ft_printf): %#025x\n", 2545);
-	// printf("UnsignHexInt, UPPERCASE (ft_printf): %#X\n", -2545);
-	// printf("UnsignHexInt, UPPERCASE (ft_printf): %#025X\n", 2545);
-	// printf("@moulitest: %#.x %#.0x\n", 0, 0);
-	// printf("%#8x\n", 42);
-
-	//  Unsigned Octal 
-	// ft_printf("Octal: %#o\n", 255); 
-	// ft_printf("UnsignOct (ft_printf): %#o\n", 33);
-	// ft_printf("UnsignOct (ft_printf): %#o\n", '\0');
-	// ft_printf("%#6o\n", 2500);
-	// ft_printf("@moulitest: %.o %.0o\n", 0, 0);
-	// ft_printf("@moulitest: %5.o %5.0o\n", 0, 0);
-
-	// printf("---------------------------------\n");
-
-	// printf("Octal: %#o\n", 255);
-	// printf("UnsignOct (ft_printf): %#o\n", '\0');
-	// printf("UnsignOct (ft_printf): %#o\n", 33);
-	// printf("%#6o\n", 2500);
-	// printf("@moulitest: %.o %.0o\n", 0, 0);
-	// printf("@moulitest: %5.o %5.0o\n", 0, 0);
-
-	// /* Pointer to character */
-	// char * b;
-	// char *d;
-	// b = "this is the first string";
-	// d = "this is a string";
-
-	// ft_printf("Pointer (printf): %p\n", d);
-	// ft_printf("Pointer (ft_printf): %p\n", d);
-	// ft_printf("%p\n", b);
-
-	// printf("---------------------------------\n");
-
-	// printf("Pointer (printf): %p\n", d);
-	// printf("Pointer (ft_printf): %p\n", d);
-	// printf("%p\n", b);
-
-	/*-------------------------------SIGNED INTEGERS-----------------------------------*/
-
-	// ft_printf("Signed Decimal (ft_printf): %d\n", 123);
-	// ft_printf("Signed Decimal (ft_printf): %d\n", -123);
-	// ft_printf("Signed Deciaml: %d\n",0); 
-	// ft_printf("Signed Deciaml: %d\n",-7);
-	// ft_printf("Signed Deciaml: %d\n",1560133635);
-	// ft_printf("Signed Deciaml: %d\n",-2035065302);
-	// ft_printf("Signed Deciaml (right-justified): %5d\n",0);
-	// ft_printf("Signed Deciaml (right-justified): %5d\n",-7);
-	// ft_printf("Signed Deciaml (right-justified): %5d\n",1560133635);
-	// ft_printf("Signed Deciaml (right-justified): %5d\n",-2035065302);
-	// ft_printf("Signed Deciaml (left-justified): %-5d\n",0);
-	// ft_printf("Signed Deciaml (left-justified): %-5d\n",-7);
-	// ft_printf("Signed Deciaml (left-justified): %-5d\n",1560133635);
-	// ft_printf("Signed Deciaml (left-justified): %-5d\n",-2035065302);
-	// ft_printf("Signed Deciaml (zero-fill): %05d\n",0);
-	// ft_printf("Signed Deciaml (zero-fill): %05d\n",-7);
-	// ft_printf("Signed Deciaml (zero-fill): %05d\n",1560133635);
-	// ft_printf("Signed Deciaml (zero-fill): %05d\n",-2035065302);
-
-	// printf("---------------------------------\n");
-
-	// printf("Signed Decimal (ft_printf): %d\n", 123);
-	// printf("Signed Decimal (ft_printf): %d\n", -123);
-	// printf("Signed Deciaml: %d\n",0); 
-	// printf("Signed Deciaml: %d\n",-7);
-	// printf("Signed Deciaml: %d\n",1560133635);
-	// printf("Signed Deciaml: %d\n",-2035065302);
-	// printf("Signed Deciaml (right-justified): %5d\n",0);
-	// printf("Signed Deciaml (right-justified): %5d\n",-7);
-	// printf("Signed Deciaml (right-justified): %5d\n",1560133635);
-	// printf("Signed Deciaml (right-justified): %5d\n",-2035065302);
-	// printf("Signed Deciaml (left-justified): %-5d\n",0);
-	// printf("Signed Deciaml (left-justified): %-5d\n",-7);
-	// printf("Signed Deciaml (left-justified): %-5d\n",1560133635);
-	// printf("Signed Deciaml (left-justified): %-5d\n",-2035065302);
-	// printf("Signed Deciaml (zero-fill): %05d\n",0);
-	// printf("Signed Deciaml (zero-fill): %05d\n",-7);
-	// printf("Signed Deciaml (zero-fill): %05d\n",1560133635);
-	// printf("Signed Deciaml (zero-fill): %05d\n",-2035065302);
-
-	// ft_printf("-->%d<--\n", -1);
-	// ft_printf("-->%d<--\n", -4242);
-	// ft_printf("-->%d<--\n", 2147483648);
-	// ft_printf("-->%d<--\n", -2147483648);
-	// ft_printf("-->% d<--\n", 42);
-	// ft_printf("-->% d<--\n", -42);
-	// ft_printf("-->%+d<--\n", 42);
-	// ft_printf("-->%+d<--\n", -42);
-	// ft_printf("-->%+d<--\n", 0);
-	// ft_printf("%+d", 4242424242424242424242);
-	// ft_printf("-->% +d<--\n", 42);
-	// ft_printf("-->% +d<--\n", -42);
-	// ft_printf("-->%+ d<--\n", 42);
-	// ft_printf("%0+5d\n", 42);
-	// ft_printf("%05d\n", -42);
-	// ft_printf("%0+5d\n", -42);
-	// ft_printf("%4.15d\n", 42);
-	// ft_printf("%.2d\n", 4242);
-	// ft_printf("%.10d\n", 4242);
-	// ft_printf("@moulitest: %.d %.0d\n", 0, 0);
-	// ft_printf("@moulitest: %5.d %5.0d\n", 0, 0);
-	// ft_printf("%+d", 0);
-	// ft_printf("%hd", −32768);
-	// ft_printf("%hd", −32769);
-
-	// printf("---------------------------------\n");
-
-	// printf("-->%d<--\n", -1);
-	// printf("-->%d<--\n", -4242);
-	// printf("-->%d<--\n", 2147483648);
-	// printf("-->%d<--\n", -2147483648);
-	// printf("-->% d<--\n", 42);
-	// printf("-->% d<--\n", -42);
-	// printf("-->%+d<--\n", 42);
-	// printf("-->%+d<--\n", -42);
-	// printf("-->%+d<--\n", 0);
-	// printf("%+d", 4242424242424242424242);
-	// printf("-->% +d<--\n", 42);
-	// printf("-->% +d<--\n", -42);
-	// printf("-->%+ d<--\n", 42);
-	// printf("%0+5d\n", 42);
-	// printf("%05d\n", -42);
-	// printf("%0+5d\n", -42);
-	// printf("%4.15d\n", 42);
-	// printf("%.2d\n", 4242);
-	// printf("%.10d\n", 4242);
-	// printf("@moulitest: %.d %.0d\n", 0, 0);
-	// printf("@moulitest: %5.d %5.0d\n", 0, 0);
-	// printf("%+d", 0);
-	// printf("%hd", −32768);
-	// printf("%hd", −32769
-
-	/*-------------------------------SIGNED FLOATS-----------------------------------*/
-
-	// ft_printf("this: %-f\n", 18.3);
-	// printf("this: %-f\n", 18.3);
-	// ft_printf("float16   :%5f|\n",  1000.1 );
-	// ft_printf("float17   :%0.1f|\n",  2000.123456789123456789 );
-	// ft_printf("float18   :%0.2f|\n",  3000.123456789123456789 );
-	// ft_printf("float19   :%0.10f|\n", 4000.123456789123456789 );
-	// ft_printf("float20   :%0.20f|\n", -5000.123456789123456789 );
-	// ft_printf("float21   :%0f|\n",    6000.123456789123456789 );
-	// ft_printf("float22   :%0.f|\n",   7000.123456789123456789 );
-
-	/*------------------------------------------------------------------*/
-
-	// ft_printf("");                                -> ""
-	// ft_printf("\\n");                             -> "\\n"
-	// ft_printf("test");                            -> "test"
-	// ft_printf("test\\n");                         -> "test\\n"
-	// ft_printf("1234");                            -> "1234"
-	// ft_printf("%%");                              -> "%"
-	// ft_printf("%5%");                             -> "    %"
-	// ft_printf("%-5%");                            -> "%    "
-	// ft_printf("%.0%");                            -> "%"
-	// ft_printf("%%", "test");                      -> "%"
-	// ft_printf("%   %", "test");                   -> "%"
-	// ft_printf("%x", 42);                          -> "2a"
-	// ft_printf("%X", 42);                          -> "2A"
-	// ft_printf("%x", 0);                           -> "0"
-	// ft_printf("%X", 0);                           -> "0"
-	// ft_printf("%x", -42);                         -> "ffffffd6"
-	// ft_printf("%X", -42);                         -> "FFFFFFD6"
-	// ft_printf("%x", 4294967296);                  -> "0"
-	// ft_printf("%X", 4294967296);                  -> "0"
-	// ft_printf("%x", test);                        -> "0"
-	// ft_printf("%10x", 42);                        -> "        2a"
-	// ft_printf("%-10x", 42);                       -> "2a        "
-	// ft_printf("%lx", 4294967296);                 -> "100000000"
-	// ft_printf("%llX", 4294967296);                -> "100000000"
-	// ft_printf("%hx", 4294967296);                 -> "0"
-	// ft_printf("%hhX", 4294967296);                -> "0"
-	// ft_printf("%llx", 9223372036854775807);       -> "7fffffffffffffff"
-	// ft_printf("%llx", 9223372036854775808);       -> "7fffffffffffffff"
-	// ft_printf("%010x", 542);                      -> "000000021e"
-	// ft_printf("%-15x", 542);                      -> "21e            "
-	// ft_printf("%2x", 542);                        -> "21e"
-	// ft_printf("%.2x", 5427);                      -> "1533"
-	// ft_printf("%5.2x", 5427);                     -> " 1533"
-	// ft_printf("%#x", 42);                         -> "0x2a"
-	// ft_printf("%#llx", 9223372036854775807);      -> "0x7fffffffffffffff"
-	// ft_printf("%#x", 0);                          -> "0"
-	// ft_printf("%#x", 42);                         -> "0x2a"
-	// ft_printf("%#X", 42);                         -> "0X2A"
-	// ft_printf("%#8x", 42);                        -> "    0x2a"
-	// ft_printf("%#08x", 42);                       -> "0x00002a"
-	// ft_printf("%#-08x", 42);                      -> "0x2a    "
-	// ft_printf("@moulitest: %#.x %#.0x", 0, 0);    -> "@moulitest:  "
-	// ft_printf("@moulitest: %.x %.0x", 0, 0);      -> "@moulitest:  "
-	// ft_printf("@moulitest: %5.x %5.0x", 0, 0);    -> "@moulitest:            "
-	// ft_printf("%s", "abc");                       -> "abc"
-	// ft_printf("%s", "this is a string");          -> "this is a string"
-	// ft_printf("%s ", "this is a string");         -> "this is a string "
-	// ft_printf("%s  ", "this is a string");        -> "this is a string  "
-	// ft_printf("this is a %s", "string");          -> "this is a string"
-	// ft_printf("%s is a string", "this");          -> "this is a string"
-	// ft_printf("Line Feed %s", "\\n");             -> "Line Feed \\n"
-	// ft_printf("%10s is a string", "this");        -> "      this is a string"
-	// ft_printf("%.2s is a string", "this");        -> "th is a string"
-	// ft_printf("%5.2s is a string", "this");       -> "   th is a string"
-	// ft_printf("%10s is a string", "");            -> "           is a string"
-	// ft_printf("%.2s is a string", "");            -> " is a string"
-	// ft_printf("%5.2s is a string", "");           -> "      is a string"
-	// ft_printf("%-10s is a string", "this");       -> "this       is a string"
-	// ft_printf("%-.2s is a string", "this");       -> "th is a string"
-	// ft_printf("%-5.2s is a string", "this");      -> "th    is a string"
-	// ft_printf("%-10s is a string", "");           -> "           is a string"
-	// ft_printf("%-.2s is a string", "");           -> " is a string"
-	// ft_printf("%-5.2s is a string", "");          -> "      is a string"
-	// ft_printf("%s %s", "this", "is");             -> "this is"
-	// ft_printf("%s %s %s", "this", "is", "a");     -> "this is a"
-	// ft_printf("%s %s %s %s", "this", "is", "a", "multi"); -> "this is a multi"
-	// ft_printf("%s %s %s %s string. gg!", "this", "is", "a", "multi", "string"); -> "this is a multi string. gg!"
-	// ft_printf("%s%s%s%s%s", "this", "is", "a", "multi", "string"); -> "thisisamultistring"
-	// ft_printf("@moulitest: %s", NULL);            -> "@moulitest: (null)"
-	// ft_printf("%.2c", NULL);                      -> "^@"
-	// ft_printf("%s %s", NULL, string);             -> "(null) string"
-	// ft_printf("%c", 42);                          -> "*"
-	// ft_printf("%5c", 42);                         -> "    *"
-	// ft_printf("%-5c", 42);                        -> "*    "
-	// ft_printf("@moulitest: %c", 0);               -> "@moulitest: ^@"
-	// ft_printf("%2c", 0);                          -> " ^@"
-	// ft_printf("null %c and text", 0);             -> "null ^@ and text"
-	// ft_printf("% c", 0);                          -> "^@"
-	// ft_printf("%o", 40);                          -> "50"
-	// ft_printf("%5o", 41);                         -> "   51"
-	// ft_printf("%05o", 42);                        -> "00052"
-	// ft_printf("%-5o", 2500);                      -> "4704 "
-	// ft_printf("%#6o", 2500);                      -> " 04704"
-	// ft_printf("%-#6o", 2500);                     -> "04704 "
-	// ft_printf("%-05o", 2500);                     -> "4704 "
-	// ft_printf("%-5.10o", 2500);                   -> "0000004704"
-	// ft_printf("%-10.5o", 2500);                   -> "04704     "
-	// ft_printf("@moulitest: %o", 0);               -> "@moulitest: 0"
-	// ft_printf("@moulitest: %.o %.0o", 0, 0);      -> "@moulitest:  "
-	// ft_printf("@moulitest: %5.o %5.0o", 0, 0);    -> "@moulitest:            "
-	// ft_printf("@moulitest: %#.o %#.0o", 0, 0);    -> "@moulitest: 0 0"
-	// ft_printf("@moulitest: %.10o", 42);           -> "@moulitest: 0000000052"
-	// ft_printf("%d", 1);                           -> "1"
-	// ft_printf("the %d", 1);                       -> "the 1"
-	// ft_printf("%d is one", 1);                    -> "1 is one"
-	// ft_printf("%d", -1);                          -> "-1"
-	// ft_printf("%d", 4242);                        -> "4242"
-	// ft_printf("%d", -4242);                       -> "-4242"
-	// ft_printf("%d", 2147483647);                  -> "2147483647"
-	// ft_printf("%d", 2147483648);                  -> "-2147483648"
-	// ft_printf("%d", -2147483648);                 -> "-2147483648"
-	// ft_printf("%d", -2147483649);                 -> "2147483647"
-	// ft_printf("% d", 42);                         -> " 42"
-	// ft_printf("% d", -42);                        -> "-42"
-	// ft_printf("%+d", 42);                         -> "+42"
-	// ft_printf("%+d", -42);                        -> "-42"
-	// ft_printf("%+d", 0);                          -> "+0"
-	// ft_printf("%+d", 4242424242424242424242);     -> "-1"
-	// ft_printf("% +d", 42);                        -> "+42"
-	// ft_printf("% +d", -42);                       -> "-42"
-	// ft_printf("%+ d", 42);                        -> "+42"
-	// ft_printf("%+ d", -42);                       -> "-42"
-	// ft_printf("%  +d", 42);                       -> "+42"
-	// ft_printf("%  +d", -42);                      -> "-42"
-	// ft_printf("%+  d", 42);                       -> "+42"
-	// ft_printf("%+  d", -42);                      -> "-42"
-	// ft_printf("% ++d", 42);                       -> "+42"
-	// ft_printf("% ++d", -42);                      -> "-42"
-	// ft_printf("%++ d", 42);                       -> "+42"
-	// ft_printf("%++ d", -42);                      -> "-42"
-	// ft_printf("%0d", -42);                        -> "-42"
-	// ft_printf("%00d", -42);                       -> "-42"
-	// ft_printf("%5d", 42);                         -> "   42"
-	// ft_printf("%05d", 42);                        -> "00042"
-	// ft_printf("%0+5d", 42);                       -> "+0042"
-	// ft_printf("%5d", -42);                        -> "  -42"
-	// ft_printf("%05d", -42);                       -> "-0042"
-	// ft_printf("%0+5d", -42);                      -> "-0042"
-	// ft_printf("%-5d", 42);                        -> "42   "
-	// ft_printf("%-05d", 42);                       -> "42   "
-	// ft_printf("%-5d", -42);                       -> "-42  "
-	// ft_printf("%-05d", -42);                      -> "-42  "
-	// ft_printf("%hd", 32767);                      -> "32767"
-	// ft_printf("%hd", −32768);                   -> "0"
-	// ft_printf("%hd", 32768);                      -> "-32768"
-	// ft_printf("%hd", −32769);                   -> "0"
-	// ft_printf("%hhd", 127);                       -> "127"
-	// ft_printf("%hhd", 128);                       -> "-128"
-	// ft_printf("%hhd", -128);                      -> "-128"
-	// ft_printf("%hhd", -129);                      -> "127"
-	// ft_printf("%ld", 2147483647);                 -> "2147483647"
-	// ft_printf("%ld", -2147483648);                -> "-2147483648"
-	// ft_printf("%ld", 2147483648);                 -> "2147483648"
-	// ft_printf("%ld", -2147483649);                -> "-2147483649"
-	// ft_printf("%lld", 9223372036854775807);       -> "9223372036854775807"
-	// ft_printf("%lld", -9223372036854775808);      -> "-9223372036854775808"
-	// ft_printf("%jd", 9223372036854775807);        -> "9223372036854775807"
-	// ft_printf("%jd", -9223372036854775808);       -> "-9223372036854775808"
-	// ft_printf("%d", 1);                           -> "1"
-	// ft_printf("%d %d", 1, -2);                    -> "1 -2"
-	// ft_printf("%d %d %d", 1, -2, 33);             -> "1 -2 33"
-	// ft_printf("%d %d %d %d", 1, -2, 33, 42);      -> "1 -2 33 42"
-	// ft_printf("%d %d %d %d gg!", 1, -2, 33, 42, 0); -> "1 -2 33 42 gg!"
-	// ft_printf("%4.15d", 42);                      -> "000000000000042"
-	// ft_printf("%.2d", 4242);                      -> "4242"
-	// ft_printf("%.10d", 4242);                     -> "0000004242"
-	// ft_printf("%10.5d", 4242);                    -> "     04242"
-	// ft_printf("%-10.5d", 4242);                   -> "04242     "
-	// ft_printf("% 10.5d", 4242);                   -> "     04242"
-	// ft_printf("%+10.5d", 4242);                   -> "    +04242"
-	// ft_printf("%-+10.5d", 4242);                  -> "+04242    "
-	// ft_printf("%03.2d", 0);                       -> " 00"
-	// ft_printf("%03.2d", 1);                       -> " 01"
-	// ft_printf("%03.2d", -1);                      -> "-01"
-	// ft_printf("@moulitest: %.10d", -42);          -> "@moulitest: -0000000042"
-	// ft_printf("@moulitest: %.d %.0d", 42, 43);    -> "@moulitest: 42 43"
-	// ft_printf("@moulitest: %.d %.0d", 0, 0);      -> "@moulitest:  "
-	// ft_printf("@moulitest: %5.d %5.0d", 0, 0);    -> "@moulitest:            "
-	// ft_printf("%u", 0);                           -> "0"
-	// ft_printf("%u", 1);                           -> "1"
-	// ft_printf("%u", -1);                          -> "4294967295"
-	// ft_printf("%u", 4294967295);                  -> "4294967295"
-	// ft_printf("%u", 4294967296);                  -> "0"
-	// ft_printf("%5u", 4294967295);                 -> "4294967295"
-	// ft_printf("%15u", 4294967295);                -> "     4294967295"
-	// ft_printf("%-15u", 4294967295);               -> "4294967295     "
-	// ft_printf("%015u", 4294967295);               -> "000004294967295"
-	// ft_printf("% u", 4294967295);                 -> "4294967295"
-	// ft_printf("%+u", 4294967295);                 -> "4294967295"
-	// ft_printf("%lu", 4294967295);                 -> "4294967295"
-	// ft_printf("%lu", 4294967296);                 -> "4294967296"
-	// ft_printf("%lu", -42);                        -> "18446744073709551574"
-	// ft_printf("%llu", 4999999999);                -> "4999999999"
-	// ft_printf("@moulitest: %.5u", 42);            -> "@moulitest: 00042"
-
-	return 0;
+	printf("unsigned char		v = %hhu sizeof v = %lu\n", v,sizeof(v));
+	printf("unsigned int		w = %u sizeof w = %lu\n",w,sizeof(w));
+	printf("unsigned long		x = %lu sizeof x = %lu\n",x,sizeof(x));
+	printf("unsigned short		y = %hu sizeof y = %lu\n",y,sizeof(y));
+	// printf("size_t			z = %zu sizeof z = %lu\n",z,sizeof(z));
+	// printf("uintmax_t		zz = %ju sizeof zz = %lu\n",zz,sizeof(zz));
+	printf("unsigned long long	aa = %llu sizeof aa = %lu\n\n",aa,sizeof(aa));
 }

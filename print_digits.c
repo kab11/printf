@@ -6,16 +6,16 @@
 /*   By: kblack <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 23:16:09 by kblack            #+#    #+#             */
-/*   Updated: 2019/01/23 23:16:17 by kblack           ###   ########.fr       */
+/*   Updated: 2019/03/07 17:01:51 by kblack           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void print_width(pf_token *pf, char *int_str)
+void	print_width(t_pf_token *pf, char *int_str)
 {
-	int len;
-	int i;
+	int	len;
+	int	i;
 
 	pf->flag.width -= (pf->flag.space + (pf->s.neg || pf->flag.plus));
 	len = (int)ft_strlen(int_str) > pf->flag.prec ? ft_strlen(int_str) : pf->flag.prec;
@@ -31,11 +31,11 @@ void print_width(pf_token *pf, char *int_str)
 	else
 	{
 		while (pf->flag.width - ++i > len)
-			pf->out += (pf->flag.zero == 1) ? write(1, "0" , 1) : write(1, " ", 1);
+			pf->out += (pf->flag.zero == 1) ? write(1, "0", 1) : write(1, " ", 1);
 	}
 }
 
-void handle_sign(pf_token *pf)
+void	handle_sign(t_pf_token *pf)
 {
 	if (pf->s.num >= 0 && (pf->flag.plus == 1 || pf->flag.space == 1))
 		pf->out += (pf->flag.plus == 1 ? write(1, "+", 1) : write(1, " ", 1));
@@ -43,7 +43,7 @@ void handle_sign(pf_token *pf)
 		pf->out += write(1, "-", 1);
 }
 
-void print_digits(pf_token *pf, char *int_str)
+void	print_digits(t_pf_token *pf, char *int_str)
 {
 	if (pf->flag.zero == 1)
 	{
